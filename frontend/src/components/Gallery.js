@@ -1,61 +1,12 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useApi } from '../hooks/useApi';
+import { galleryService } from '../services/api';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // Mock gallery images - in real implementation, these would be actual photos
-  const galleryImages = [
-    {
-      id: 1,
-      title: "PlayStation Gaming Zone",
-      description: "State-of-the-art PlayStation consoles with comfortable gaming chairs",
-      category: "PlayStation"
-    },
-    {
-      id: 2,
-      title: "Xbox Gaming Area",
-      description: "Xbox Series X/S setups with high-definition displays",
-      category: "Xbox"
-    },
-    {
-      id: 3,
-      title: "Nintendo Switch Station",
-      description: "Portable and docked Nintendo Switch gaming experience",
-      category: "Nintendo"
-    },
-    {
-      id: 4,
-      title: "VR Gaming Experience",
-      description: "Immersive virtual reality gaming with latest VR headsets",
-      category: "VR"
-    },
-    {
-      id: 5,
-      title: "Board Games Collection",
-      description: "Extensive collection of board games for all ages",
-      category: "Board Games"
-    },
-    {
-      id: 6,
-      title: "Gaming Lounge",
-      description: "Comfortable lounge area for relaxation between gaming sessions",
-      category: "Lounge"
-    },
-    {
-      id: 7,
-      title: "Group Gaming Setup",
-      description: "Multiple gaming stations for group competitions",
-      category: "Group"
-    },
-    {
-      id: 8,
-      title: "Birthday Party Area",
-      description: "Special area decorated for birthday celebrations",
-      category: "Events"
-    }
-  ];
+  const { data: galleryImages, loading } = useApi(galleryService.getAll, []);
 
   const openModal = (image) => {
     setSelectedImage(image);
@@ -66,16 +17,30 @@ const Gallery = () => {
   };
 
   const nextImage = () => {
+    if (!galleryImages) return;
     const currentIndex = galleryImages.findIndex(img => img.id === selectedImage.id);
     const nextIndex = (currentIndex + 1) % galleryImages.length;
     setSelectedImage(galleryImages[nextIndex]);
   };
 
   const prevImage = () => {
+    if (!galleryImages) return;
     const currentIndex = galleryImages.findIndex(img => img.id === selectedImage.id);
     const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     setSelectedImage(galleryImages[prevIndex]);
   };
+
+  if (loading) {
+    return (
+      <section id="gallery" className="py-20 px-4 bg-bg-primary">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="text-text-primary">Loading gallery...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="gallery" className="py-20 px-4 bg-bg-primary">
@@ -90,7 +55,7 @@ const Gallery = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {galleryImages.map((image) => (
+          {galleryImages?.map((image) => (
             <Card 
               key={image.id} 
               className="bg-bg-secondary border-border-subtle hover:border-accent-primary transition-all duration-300 cursor-pointer group"
@@ -98,11 +63,19 @@ const Gallery = () => {
             >
               <CardContent className="p-0">
                 <div className="aspect-square bg-gradient-to-br from-bg-tertiary to-bg-secondary flex items-center justify-center relative overflow-hidden">
-                  {/* Placeholder for actual image */}
-                  <div className="text-center">
-                    <div className="text-4xl mb-2">📸</div>
-                    <p className="text-text-secondary text-sm font-medium">{image.category}</p>
-                  </div>
+                  {/* Display actual image if available */}
+                  {image.image_data ? (
+                    <img 
+                      src={image.image_data} 
+                      alt={image.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-4xl mb-2">📸</div>
+                      <p className="text-text-secondary text-sm font-medium">{image.category}</p>
+                    </div>
+                  )}
                   
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-bg-primary bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -147,10 +120,18 @@ const Gallery = () => {
               {/* Image content */}
               <div className="bg-bg-secondary rounded-lg p-8 text-center">
                 <div className="aspect-video bg-gradient-to-br from-bg-tertiary to-bg-primary rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">📸</div>
-                    <p className="text-text-secondary">{selectedImage.category}</p>
-                  </div>
+                  {selectedImage.image_data ? (
+                    <img 
+                      src={selectedImage.image_data} 
+                      alt={selectedImage.title}
+                      className="max-w-full max-h-full object-contain rounded-lg"
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-6xl mb-4">📸</div>
+                      <p className="text-text-secondary">{selectedImage.category}</p>
+                    </div>
+                  )}
                 </div>
                 
                 <h3 className="text-xl font-semibold text-text-primary mb-2">
