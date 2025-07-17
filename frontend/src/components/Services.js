@@ -1,40 +1,33 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Gamepad2, Tv, Joystick, Glasses, Dice6 } from 'lucide-react';
+import { useApi } from '../hooks/useApi';
+import { gameTypeService } from '../services/api';
 
 const Services = () => {
-  const services = [
-    {
-      icon: <Gamepad2 className="w-12 h-12 text-accent-primary" />,
-      title: "PlayStation Gaming",
-      description: "Latest PlayStation consoles with exclusive games and multiplayer experiences",
-      features: ["PS5 & PS4 Consoles", "Exclusive Titles", "Multiplayer Support", "4K Gaming"]
-    },
-    {
-      icon: <Tv className="w-12 h-12 text-accent-primary" />,
-      title: "Xbox Gaming",
-      description: "Xbox Series X/S and Xbox One with Game Pass library access",
-      features: ["Xbox Series X/S", "Game Pass Library", "Xbox Live Gold", "HDR Gaming"]
-    },
-    {
-      icon: <Joystick className="w-12 h-12 text-accent-primary" />,
-      title: "Nintendo Switch",
-      description: "Portable and console gaming with Nintendo's exclusive titles",
-      features: ["Switch OLED", "Exclusive Nintendo Games", "Portable Gaming", "Local Multiplayer"]
-    },
-    {
-      icon: <Glasses className="w-12 h-12 text-accent-primary" />,
-      title: "VR Gaming",
-      description: "Immersive virtual reality experiences with cutting-edge technology",
-      features: ["VR Headsets", "Immersive Games", "Virtual Worlds", "Motion Controllers"]
-    },
-    {
-      icon: <Dice6 className="w-12 h-12 text-accent-primary" />,
-      title: "Board Games",
-      description: "Classic and modern board games for family fun and strategy",
-      features: ["Strategy Games", "Family Games", "Card Games", "Party Games"]
-    }
-  ];
+  const { data: gameTypes, loading } = useApi(gameTypeService.getAll, []);
+
+  const getIcon = (gameType) => {
+    const icons = {
+      'playstation': '🎮',
+      'xbox': '🎮',
+      'nintendo': '🎮',
+      'vr': '🥽',
+      'board': '🎲'
+    };
+    return icons[gameType.id] || '🎮';
+  };
+
+  if (loading) {
+    return (
+      <section id="services" className="py-20 px-4 bg-bg-primary">
+        <div className="container mx-auto">
+          <div className="text-center">
+            <div className="text-text-primary">Loading services...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="services" className="py-20 px-4 bg-bg-primary">
@@ -50,25 +43,25 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="bg-bg-secondary border-border-subtle hover:border-accent-primary transition-all duration-300 hover:transform hover:scale-105">
+          {gameTypes?.map((gameType, index) => (
+            <Card key={gameType.id} className="bg-bg-secondary border-border-subtle hover:border-accent-primary transition-all duration-300 hover:transform hover:scale-105">
               <CardHeader>
                 <div className="flex items-center justify-center mb-4">
-                  {service.icon}
+                  <span className="text-6xl">{getIcon(gameType)}</span>
                 </div>
                 <CardTitle className="text-xl text-text-primary text-center">
-                  {service.title}
+                  {gameType.name}
                 </CardTitle>
                 <CardDescription className="text-text-secondary text-center">
-                  {service.description}
+                  {gameType.description}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
+                  {gameType.popular_games?.map((game, idx) => (
                     <li key={idx} className="flex items-center text-text-secondary">
                       <div className="w-2 h-2 bg-accent-primary rounded-full mr-3"></div>
-                      {feature}
+                      {game}
                     </li>
                   ))}
                 </ul>
