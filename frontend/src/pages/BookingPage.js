@@ -117,9 +117,9 @@ const BookingPage = () => {
 
   const getGameTypeDisplay = (gameType) => {
     const icons = {
-      'playstation': '🎮',
+      'ps5': '🎮',
       'xbox': '🎮',
-      'nintendo': '🎮',
+      'switch': '🎮',
       'vr': '🥽',
       'board': '🎲'
     };
