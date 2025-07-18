@@ -90,19 +90,25 @@ const Services = () => {
               
               <CardContent className="relative z-10">
                 <ul className="space-y-2 mb-4">
-                  {gameType.popular_games?.map((game, idx) => (
+                  {gameType.popular_games?.slice(0, 6).map((game, idx) => (
                     <li key={idx} className="flex items-center text-text-secondary group-hover:text-text-primary transition-colors duration-300">
                       <div className="w-2 h-2 bg-accent-primary rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></div>
                       <span className="text-sm">{game}</span>
                     </li>
                   ))}
+                  {gameType.popular_games?.length > 6 && (
+                    <li className="flex items-center text-accent-primary group-hover:text-accent-primary transition-colors duration-300">
+                      <div className="w-2 h-2 bg-accent-primary rounded-full mr-3"></div>
+                      <span className="text-sm font-medium">+{gameType.popular_games.length - 6} more games</span>
+                    </li>
+                  )}
                 </ul>
                 
                 <Button 
                   className="w-full bg-transparent border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-bg-primary transition-all duration-300 group-hover:scale-105"
                   onClick={() => navigate('/booking')}
                 >
-                  Book Now
+                  <span className="text-on-accent">Book Now</span>
                 </Button>
               </CardContent>
             </Card>
