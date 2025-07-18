@@ -342,8 +342,8 @@ class SettingsService:
                 "birthday_max_people": 8
             },
             "contact": {
-                "address": "123 Gaming Street, Tech City, TC 12345",
-                "phone": "+91 98765 43210",
+                "address": "537, BAIRAGIPATTEDA RD, TIRUPATI-517501",
+                "phone": "+91 77025 28817",
                 "email": "info@karthikeyagamesgalaxy.com",
                 "hours": "10:00 AM - 10:00 PM",
                 "social": {
