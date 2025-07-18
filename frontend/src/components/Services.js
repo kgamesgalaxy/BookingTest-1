@@ -105,10 +105,10 @@ const Services = () => {
                 </ul>
                 
                 <Button 
-                  className="w-full bg-transparent border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-bg-primary transition-all duration-300 group-hover:scale-105"
+                  className="w-full bg-transparent border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-bg-primary transition-all duration-300 group-hover:scale-105 hover-bg-accent-primary"
                   onClick={() => navigate('/booking')}
                 >
-                  <span className="text-on-accent">Book Now</span>
+                  Book Now
                 </Button>
               </CardContent>
             </Card>
