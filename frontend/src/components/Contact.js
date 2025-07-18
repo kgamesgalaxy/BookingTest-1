@@ -102,7 +102,7 @@ const Contact = () => {
               <Button 
                 size="lg"
                 className="bg-accent-primary text-bg-primary hover:bg-accent-hover"
-                onClick={() => window.open('tel:+919876543210', '_self')}
+                onClick={() => window.open('tel:+917702528817', '_self')}
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call Now
