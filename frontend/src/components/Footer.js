@@ -109,15 +109,15 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 text-accent-primary mt-0.5" />
                 <div>
                   <p className="text-text-secondary text-sm">
-                    123 Gaming Street<br />
-                    Tech City, TC 12345
+                    537, BAIRAGIPATTEDA RD<br />
+                    TIRUPATI-517501
                   </p>
                 </div>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-accent-primary" />
-                <p className="text-text-secondary text-sm">+91 98765 43210</p>
+                <p className="text-text-secondary text-sm">+91 77025 28817</p>
               </div>
               
               <div className="flex items-center space-x-3">
