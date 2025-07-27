@@ -138,51 +138,54 @@ const BookingPage = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           {/* Booking Form */}
-          <div className="lg:col-span-2">
+          <div className="xl:col-span-2">
             <Card className="bg-gaming-card border-gaming-border shadow-gaming-lg">
-              <CardHeader>
-                <CardTitle className="text-gaming-text">Booking Details</CardTitle>
-                <CardDescription className="text-gaming-text-secondary">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-gaming-text text-xl lg:text-2xl">Booking Details</CardTitle>
+                <CardDescription className="text-gaming-text-secondary text-sm lg:text-base">
                   Fill in your details to reserve your gaming session. Pricing will be shared during confirmation.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="pt-0">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Personal Information */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-gaming-text">Personal Information</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor="name" className="text-gaming-text-secondary">Full Name *</Label>
+                        <Label htmlFor="name" className="text-gaming-text-secondary font-medium">Full Name *</Label>
                         <Input
                           id="name"
                           value={formData.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
-                          className="bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent"
+                          className="mt-1 bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent h-10 lg:h-11"
+                          placeholder="Enter your full name"
                           required
                         />
                       </div>
                       <div>
-                        <Label htmlFor="phone" className="text-gaming-text-secondary">Phone Number *</Label>
+                        <Label htmlFor="phone" className="text-gaming-text-secondary font-medium">Phone Number *</Label>
                         <Input
                           id="phone"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent"
+                          className="mt-1 bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent h-10 lg:h-11"
+                          placeholder="+91 XXXXX XXXXX"
                           required
                         />
                       </div>
                     </div>
                     <div>
-                      <Label htmlFor="email" className="text-gaming-text-secondary">Email (Optional)</Label>
+                      <Label htmlFor="email" className="text-gaming-text-secondary font-medium">Email (Optional)</Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent"
+                        className="mt-1 bg-gaming-light border-gaming-border text-gaming-text focus:border-gaming-accent h-10 lg:h-11"
+                        placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
@@ -191,14 +194,14 @@ const BookingPage = () => {
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-gaming-text">Gaming Preferences</h3>
                     <div>
-                      <Label className="text-gaming-text-secondary">Game Type *</Label>
+                      <Label className="text-gaming-text-secondary font-medium">Game Type *</Label>
                       <Select onValueChange={(value) => handleInputChange('game_type', value)}>
-                        <SelectTrigger className="bg-gaming-light border-gaming-border text-gaming-text">
+                        <SelectTrigger className="mt-1 bg-gaming-light border-gaming-border text-gaming-text h-10 lg:h-11">
                           <SelectValue placeholder="Select game type" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white border-gaming-border shadow-2xl">
                           {gameTypes.map((game) => (
-                            <SelectItem key={game.id} value={game.id}>
+                            <SelectItem key={game.id} value={game.id} className="focus:bg-gaming-accent-light">
                               {getGameTypeDisplay(game)}
                             </SelectItem>
                           ))}
@@ -210,20 +213,20 @@ const BookingPage = () => {
                   {/* Date and Time */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-gaming-text">Date & Time</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <Label className="text-gaming-text-secondary">Select Date *</Label>
+                        <Label className="text-gaming-text-secondary font-medium">Select Date *</Label>
                         <Popover>
                           <PopoverTrigger asChild>
                             <Button
                               variant="outline"
-                              className="w-full justify-start text-left font-normal bg-gaming-light border-gaming-border text-gaming-text"
+                              className="w-full justify-start text-left font-normal bg-gaming-light border-gaming-border text-gaming-text hover:bg-gaming-accent-light mt-1 h-10 lg:h-11"
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {selectedDate ? format(selectedDate, 'PPP') : 'Pick a date'}
                             </Button>
                           </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0">
+                          <PopoverContent className="w-auto p-0 bg-white border-gaming-border shadow-2xl">
                             <Calendar
                               mode="single"
                               selected={selectedDate}
@@ -235,17 +238,18 @@ const BookingPage = () => {
                         </Popover>
                       </div>
                       <div>
-                        <Label className="text-gaming-text-secondary">Time Slot *</Label>
+                        <Label className="text-gaming-text-secondary font-medium">Time Slot *</Label>
                         <Select onValueChange={(value) => handleInputChange('time_slot', value)}>
-                          <SelectTrigger className="bg-gaming-light border-gaming-border text-gaming-text">
+                          <SelectTrigger className="mt-1 bg-gaming-light border-gaming-border text-gaming-text h-10 lg:h-11">
                             <SelectValue placeholder="Select time" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-white border-gaming-border shadow-2xl">
                             {availableSlots.map((slot) => (
                               <SelectItem 
                                 key={slot.time} 
                                 value={slot.time}
                                 disabled={!slot.available}
+                                className="focus:bg-gaming-accent-light"
                               >
                                 {slot.time} {!slot.available && '(Booked)'}
                               </SelectItem>
@@ -258,13 +262,13 @@ const BookingPage = () => {
 
                   {/* Special Requests */}
                   <div>
-                    <Label htmlFor="special_requests" className="text-gaming-text-secondary">Special Requests (Optional)</Label>
+                    <Label htmlFor="special_requests" className="text-gaming-text-secondary font-medium">Special Requests (Optional)</Label>
                     <textarea
                       id="special_requests"
                       value={formData.special_requests}
                       onChange={(e) => handleInputChange('special_requests', e.target.value)}
                       rows={3}
-                      className="w-full mt-1 px-3 py-2 bg-gaming-light border border-gaming-border rounded-md text-gaming-text resize-none focus:border-gaming-accent"
+                      className="w-full mt-1 px-3 py-2 bg-gaming-light border border-gaming-border rounded-md text-gaming-text resize-none focus:border-gaming-accent focus:outline-none focus:ring-2 focus:ring-gaming-accent/20"
                       placeholder="Any special requirements or requests..."
                     />
                   </div>
@@ -272,8 +276,7 @@ const BookingPage = () => {
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    className="w-full bg-gaming-accent text-gaming-light hover:bg-gaming-accent-hover shadow-gaming-lg"
-                    size="lg"
+                    className="w-full bg-gaming-accent text-gaming-light hover:bg-gaming-accent-hover shadow-gaming-lg h-11 lg:h-12 text-base font-semibold"
                     disabled={bookingLoading}
                   >
                     {bookingLoading ? 'Booking...' : 'Confirm Booking'}
@@ -284,71 +287,73 @@ const BookingPage = () => {
           </div>
 
           {/* Information Panel */}
-          <div className="lg:col-span-1">
-            <Card className="bg-gaming-card border-gaming-border shadow-gaming-lg">
-              <CardHeader>
-                <CardTitle className="text-gaming-text">Booking Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Pricing Info */}
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-gaming-text">Pricing</h4>
-                  <div className="bg-gaming-accent-light p-4 rounded-lg">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gaming-accent">₹150+</div>
-                      <div className="text-gaming-text-secondary text-sm">per hour</div>
-                      <div className="text-gaming-text-muted text-xs mt-1">*Varies by game & platform</div>
+          <div className="xl:col-span-1">
+            <div className="sticky top-8">
+              <Card className="bg-gaming-card border-gaming-border shadow-gaming-lg">
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-gaming-text text-xl">Booking Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6 pt-0">
+                  {/* Pricing Info */}
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-gaming-text">Pricing</h4>
+                    <div className="bg-gaming-accent-light p-4 rounded-lg">
+                      <div className="text-center">
+                        <div className="text-2xl lg:text-3xl font-bold text-gaming-accent">₹150+</div>
+                        <div className="text-gaming-text-secondary text-sm">per hour</div>
+                        <div className="text-gaming-text-muted text-xs mt-1">*Varies by game & platform</div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gaming-text-secondary">
+                      Final pricing will be shared during booking confirmation based on your selected game and platform.
+                    </p>
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="space-y-3 pt-4 border-t border-gaming-border">
+                    <h4 className="font-semibold text-gaming-text">Contact & Location</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3 text-gaming-text-secondary">
+                        <Phone className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">+91 77025 28817</span>
+                      </div>
+                      <div className="flex items-center space-x-3 text-gaming-text-secondary">
+                        <Clock className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">10:00 AM - 11:00 PM (Daily)</span>
+                      </div>
+                      <div className="flex items-start space-x-3 text-gaming-text-secondary">
+                        <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">537, BAIRAGIPATTEDA RD, TIRUPATI - 517501</span>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-sm text-gaming-text-secondary">
-                    Final pricing will be shared during booking confirmation based on your selected game and platform.
-                  </p>
-                </div>
 
-                {/* Contact Info */}
-                <div className="space-y-3 pt-4 border-t border-gaming-border">
-                  <h4 className="font-semibold text-gaming-text">Contact & Location</h4>
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2 text-gaming-text-secondary">
-                      <Phone className="w-4 h-4" />
-                      <span className="text-sm">+91 77025 28817</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-gaming-text-secondary">
-                      <Clock className="w-4 h-4" />
-                      <span className="text-sm">10:00 AM - 11:00 PM (Daily)</span>
-                    </div>
-                    <div className="flex items-start space-x-2 text-gaming-text-secondary">
-                      <MapPin className="w-4 h-4 mt-0.5" />
-                      <span className="text-sm">537, BAIRAGIPATTEDA RD, TIRUPATI - 517501</span>
+                  {/* Gaming Info */}
+                  <div className="space-y-3 pt-4 border-t border-gaming-border">
+                    <h4 className="font-semibold text-gaming-text">What's Included</h4>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-3 text-gaming-text-secondary">
+                        <GamepadIcon className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">All gaming platforms available</span>
+                      </div>
+                      <div className="flex items-center space-x-3 text-gaming-text-secondary">
+                        <Clock className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">Flexible session duration</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Gaming Info */}
-                <div className="space-y-3 pt-4 border-t border-gaming-border">
-                  <h4 className="font-semibold text-gaming-text">What's Included</h4>
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2 text-gaming-text-secondary">
-                      <GamepadIcon className="w-4 h-4" />
-                      <span className="text-sm">All gaming platforms available</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-gaming-text-secondary">
-                      <Clock className="w-4 h-4" />
-                      <span className="text-sm">Flexible session duration</span>
-                    </div>
+                  <div className="pt-4 border-t border-gaming-border">
+                    <p className="text-sm text-gaming-text-secondary">
+                      Need help? Call us at{' '}
+                      <a href="tel:+917702528817" className="text-gaming-accent hover:underline font-medium">
+                        +91 77025 28817
+                      </a>
+                    </p>
                   </div>
-                </div>
-
-                <div className="pt-4 border-t border-gaming-border">
-                  <p className="text-sm text-gaming-text-secondary">
-                    Need help? Call us at{' '}
-                    <a href="tel:+917702528817" className="text-gaming-accent hover:underline">
-                      +91 77025 28817
-                    </a>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
