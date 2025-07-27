@@ -48,17 +48,17 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="py-20 px-4 bg-gaming-dark relative overflow-hidden">
+    <section id="services" className="py-20 px-4 bg-gaming-lighter relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-40 left-10 w-80 h-80 bg-gaming-accent/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-10 w-96 h-96 bg-gaming-accent/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-40 left-10 w-80 h-80 bg-gaming-accent/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 right-10 w-96 h-96 bg-gaming-accent/2 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-gaming-accent/10 backdrop-blur-sm px-4 py-2 rounded-full border border-gaming-accent/20 mb-6">
+          <div className="inline-flex items-center space-x-2 bg-gaming-light backdrop-blur-sm px-6 py-3 rounded-full border border-gaming-accent/20 mb-6 shadow-gaming">
             <Star className="w-5 h-5 text-gaming-accent" />
             <span className="text-gaming-accent font-semibold text-sm tracking-wider uppercase">
               Gaming Services
@@ -67,7 +67,7 @@ const Services = () => {
           
           <h2 className="text-3xl md:text-5xl font-bold text-gaming-text mb-4 animate-fade-in-up">
             Premium Gaming
-            <span className="block text-gaming-accent neon-text">Platforms</span>
+            <span className="block text-gaming-accent subtle-text">Platforms</span>
           </h2>
           
           <p className="text-lg text-gaming-text-secondary max-w-2xl mx-auto animate-fade-in-up delay-200">
@@ -80,18 +80,15 @@ const Services = () => {
           {gameTypes?.map((gameType, index) => (
             <Card 
               key={gameType.id} 
-              className={`gaming-card group cursor-pointer bg-gradient-to-br ${getPlatformColor(gameType)} animate-fade-in-up`}
+              className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300 hover:scale-105 animate-fade-in-up`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gaming-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-              
               {/* Status Indicator */}
-              <div className="absolute top-4 right-4 w-3 h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming-glow"></div>
+              <div className="absolute top-4 right-4 w-3 h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming"></div>
 
               <CardHeader className="relative z-10 text-center">
                 <div className="flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <div className="p-4 rounded-2xl bg-gaming-accent/10 text-gaming-accent group-hover:bg-gaming-accent group-hover:text-gaming-dark transition-all duration-300">
+                  <div className="p-4 rounded-2xl bg-gaming-accent-light text-gaming-accent group-hover:bg-gaming-accent group-hover:text-gaming-light transition-all duration-300">
                     {getIcon(gameType)}
                   </div>
                 </div>
@@ -129,7 +126,7 @@ const Services = () => {
                 
                 {/* Action Button */}
                 <Button 
-                  className="w-full bg-transparent border-2 border-gaming-accent/30 text-gaming-accent hover:bg-gaming-accent hover:text-gaming-dark transition-all duration-300 group-hover:scale-105 group-hover:shadow-gaming-glow"
+                  className="w-full bg-transparent border-2 border-gaming-accent/30 text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light transition-all duration-300 group-hover:scale-105 shadow-gaming"
                   onClick={() => navigate('/booking')}
                 >
                   Book Session
@@ -143,7 +140,7 @@ const Services = () => {
         {/* Pricing Section */}
         <div className="text-center animate-fade-in-up delay-500">
           <div className="max-w-3xl mx-auto">
-            <div className="bg-gaming-card/50 backdrop-blur-sm rounded-3xl p-8 border border-gaming-accent/20 hover:border-gaming-accent/40 transition-all duration-300">
+            <div className="bg-gaming-light/80 backdrop-blur-sm rounded-3xl p-8 border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300">
               <h3 className="text-2xl font-bold text-gaming-text mb-4">
                 One Price, All Platforms
               </h3>
@@ -153,10 +150,10 @@ const Services = () => {
               
               <div className="flex items-center justify-center space-x-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-gaming-accent neon-text">₹120</div>
+                  <div className="text-4xl font-bold text-gaming-accent subtle-text">₹120</div>
                   <div className="text-gaming-text-secondary">per hour</div>
                 </div>
-                <div className="w-px h-12 bg-gaming-accent/20"></div>
+                <div className="w-px h-12 bg-gaming-border"></div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gaming-text">All Platforms</div>
                   <div className="text-gaming-text-secondary">included</div>
@@ -165,7 +162,7 @@ const Services = () => {
               
               <Button 
                 size="lg"
-                className="bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-dark font-bold px-12 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-gaming-glow-strong"
+                className="bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-bold px-12 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-gaming-lg"
                 onClick={() => navigate('/booking')}
               >
                 <Gamepad2 className="w-5 h-5 mr-2" />
