@@ -133,20 +133,24 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border-subtle mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-text-secondary text-sm">
+        <div className="border-t border-gaming-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gaming-text-secondary text-sm">
             © 2024 Karthikeya Games Galaxy. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-text-secondary hover:text-accent-primary text-sm transition-colors">
+            <a href="#" className="text-gaming-text-secondary hover:text-gaming-accent text-sm transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-text-secondary hover:text-accent-primary text-sm transition-colors">
+            <a href="#" className="text-gaming-text-secondary hover:text-gaming-accent text-sm transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="text-text-secondary hover:text-accent-primary text-sm transition-colors">
-              Refund Policy
-            </a>
+            <button 
+              onClick={() => navigate('/admin')}
+              className="text-gaming-text-secondary hover:text-gaming-accent text-sm transition-colors flex items-center"
+            >
+              <Shield className="w-3 h-3 mr-1" />
+              Admin
+            </button>
           </div>
         </div>
       </div>
