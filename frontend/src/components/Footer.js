@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  
   const quickLinks = [
     { name: 'Home', href: '#' },
     { name: 'Services', href: '#services' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Games', href: '#games' },
+    { name: 'Contact', href: '#contact' },
+    { name: 'Book Now', href: '/booking', isButton: true }
   ];
 
   const gamingServices = [
