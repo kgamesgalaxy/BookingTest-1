@@ -84,17 +84,17 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)]">
             {/* Left Content */}
-            <div className="text-left">
-              <div className="inline-flex items-center space-x-2 bg-gaming-light/80 backdrop-blur-sm px-6 py-3 rounded-full border border-gaming-accent/20 mb-8 animate-fade-in-up shadow-gaming">
-                <Gamepad2 className="w-5 h-5 text-gaming-accent" />
-                <span className="text-gaming-accent font-semibold text-sm tracking-wider uppercase">
+            <div className="text-left py-8 lg:py-0">
+              <div className="inline-flex items-center space-x-2 bg-gaming-light/80 backdrop-blur-sm px-4 lg:px-6 py-2 lg:py-3 rounded-full border border-gaming-accent/20 mb-6 lg:mb-8 animate-fade-in-up shadow-gaming">
+                <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5 text-gaming-accent" />
+                <span className="text-gaming-accent font-semibold text-xs lg:text-sm tracking-wider uppercase">
                   Karthikeya Games Galaxy
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-200">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6 leading-tight animate-fade-in-up delay-200">
                 <span className="text-gaming-text">
                   {heroSlides[currentSlide].title}
                 </span>
@@ -104,67 +104,67 @@ const Hero = () => {
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-gaming-text-secondary max-w-2xl leading-relaxed mb-10 animate-fade-in-up delay-300">
+              <p className="text-base sm:text-lg lg:text-xl text-gaming-text-secondary max-w-2xl leading-relaxed mb-8 lg:mb-10 animate-fade-in-up delay-300">
                 {heroSlides[currentSlide].description}
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up delay-400">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12 animate-fade-in-up delay-400">
                 <Button 
                   size="lg"
-                  className="bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-gaming-lg group"
+                  className="bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-gaming-lg group"
                   onClick={() => navigate('/booking')}
                 >
-                  <Play className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
+                  <Play className="w-4 h-4 lg:w-5 lg:h-5 mr-2 lg:mr-3 group-hover:scale-110 transition-transform duration-200" />
                   Book Now
-                  <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 ml-2 lg:ml-3 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-2 border-gaming-accent text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light px-8 py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 backdrop-blur-sm font-semibold shadow-gaming"
+                  className="border-2 border-gaming-accent text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg rounded-xl transition-all duration-300 transform hover:scale-105 backdrop-blur-sm font-semibold shadow-gaming"
                   onClick={() => scrollToSection('games')}
                 >
-                  <Gamepad2 className="w-5 h-5 mr-3" />
+                  <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5 mr-2 lg:mr-3" />
                   View Games
                 </Button>
               </div>
             </div>
 
             {/* Right Content - Stats */}
-            <div className="grid grid-cols-1 gap-6 animate-fade-in-up delay-500">
-              <div className="bg-gaming-light/80 backdrop-blur-md p-8 rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-2xl bg-gaming-accent-light text-gaming-accent">
-                    <Gamepad2 className="w-8 h-8" />
+            <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-fade-in-up delay-500">
+              <div className="bg-gaming-light/80 backdrop-blur-md p-6 lg:p-8 rounded-2xl lg:rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
+                <div className="flex items-center space-x-3 lg:space-x-4">
+                  <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-gaming-accent-light text-gaming-accent">
+                    <Gamepad2 className="w-6 h-6 lg:w-8 lg:h-8" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gaming-accent">5+</div>
-                    <div className="text-gaming-text-secondary font-medium">Gaming Platforms</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-gaming-accent">5+</div>
+                    <div className="text-gaming-text-secondary font-medium text-sm lg:text-base">Gaming Platforms</div>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gaming-light/80 backdrop-blur-md p-8 rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-2xl bg-gaming-accent-light text-gaming-accent">
-                    <Clock className="w-8 h-8" />
+              <div className="bg-gaming-light/80 backdrop-blur-md p-6 lg:p-8 rounded-2xl lg:rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
+                <div className="flex items-center space-x-3 lg:space-x-4">
+                  <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-gaming-accent-light text-gaming-accent">
+                    <Clock className="w-6 h-6 lg:w-8 lg:h-8" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gaming-accent">₹150+</div>
-                    <div className="text-gaming-text-secondary font-medium">Per Hour</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-gaming-accent">₹150+</div>
+                    <div className="text-gaming-text-secondary font-medium text-sm lg:text-base">Per Hour</div>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-gaming-light/80 backdrop-blur-md p-8 rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-2xl bg-gaming-accent-light text-gaming-accent">
-                    <Users className="w-8 h-8" />
+              <div className="bg-gaming-light/80 backdrop-blur-md p-6 lg:p-8 rounded-2xl lg:rounded-3xl border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300 group">
+                <div className="flex items-center space-x-3 lg:space-x-4">
+                  <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-gaming-accent-light text-gaming-accent">
+                    <Users className="w-6 h-6 lg:w-8 lg:h-8" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gaming-accent">100+</div>
-                    <div className="text-gaming-text-secondary font-medium">Happy Gamers</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-gaming-accent">100+</div>
+                    <div className="text-gaming-text-secondary font-medium text-sm lg:text-base">Happy Gamers</div>
                   </div>
                 </div>
               </div>
