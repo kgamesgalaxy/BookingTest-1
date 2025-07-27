@@ -95,16 +95,16 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight animate-fade-in-up delay-200">
-              <span className="text-white drop-shadow-2xl">
+              <span className="text-white drop-shadow-2xl" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.1)'}}>
                 {heroSlides[currentSlide].title}
               </span>
               <br />
-              <span className="text-gaming-accent drop-shadow-2xl neon-text">
+              <span className="text-gaming-accent drop-shadow-2xl neon-text" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0, 212, 255, 0.8)'}}>
                 {heroSlides[currentSlide].subtitle}
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-10 animate-fade-in-up delay-300 drop-shadow-lg font-medium">
+            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed mb-10 animate-fade-in-up delay-300 font-medium" style={{textShadow: '1px 1px 4px rgba(0,0,0,0.8)'}}>
               {heroSlides[currentSlide].description}
             </p>
           </div>
