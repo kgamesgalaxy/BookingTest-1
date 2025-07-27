@@ -444,6 +444,7 @@ class BackendTester:
             self.test_settings_api,
             self.test_availability_api,
             self.test_booking_api,
+            self.test_admin_interface,  # Test admin interface
         ]
         
         for test in tests:
