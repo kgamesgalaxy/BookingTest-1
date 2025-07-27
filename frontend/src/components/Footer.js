@@ -37,13 +37,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-bg-secondary border-t border-border-subtle">
+    <footer className="bg-gaming-light border-t border-gaming-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <Logo />
-            <p className="text-text-secondary text-sm">
+            <p className="text-gaming-text-secondary text-sm">
               Your ultimate gaming destination. Experience the best in console gaming, VR, and board games all under one roof.
             </p>
             <div className="flex space-x-4">
@@ -51,7 +51,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-bg-tertiary rounded-lg flex items-center justify-center text-text-secondary hover:bg-accent-primary hover:text-bg-primary transition-all duration-200"
+                  className="w-10 h-10 bg-gaming-accent-light rounded-lg flex items-center justify-center text-gaming-text-secondary hover:bg-gaming-accent hover:text-gaming-light transition-all duration-200"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -62,18 +62,27 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-text-primary mb-4">
+            <h4 className="text-lg font-semibold text-gaming-text mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <button
-                    onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-text-secondary hover:text-accent-primary transition-colors duration-200 text-sm"
-                  >
-                    {link.name}
-                  </button>
+                  {link.isButton ? (
+                    <button
+                      onClick={() => navigate(link.href)}
+                      className="text-gaming-text-secondary hover:text-gaming-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => link.href.startsWith('#') ? scrollToSection(link.href.slice(1)) : navigate(link.href)}
+                      className="text-gaming-text-secondary hover:text-gaming-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>
@@ -81,7 +90,7 @@ const Footer = () => {
 
           {/* Gaming Services */}
           <div>
-            <h4 className="text-lg font-semibold text-text-primary mb-4">
+            <h4 className="text-lg font-semibold text-gaming-text mb-4">
               Gaming Services
             </h4>
             <ul className="space-y-2">
@@ -89,7 +98,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={service.href}
-                    className="text-text-secondary hover:text-accent-primary transition-colors duration-200 text-sm"
+                    className="text-gaming-text-secondary hover:text-gaming-accent transition-colors text-sm"
                   >
                     {service.name}
                   </a>
@@ -100,14 +109,14 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-text-primary mb-4">
+            <h4 className="text-lg font-semibold text-gaming-text mb-4">
               Contact Info
             </h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-accent-primary mt-0.5" />
+                <MapPin className="w-5 h-5 text-gaming-accent mt-0.5" />
                 <div>
-                  <p className="text-text-secondary text-sm">
+                  <p className="text-gaming-text-secondary text-sm">
                     537, BAIRAGIPATTEDA RD<br />
                     TIRUPATI-517501
                   </p>
@@ -115,18 +124,18 @@ const Footer = () => {
               </div>
               
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-accent-primary" />
-                <p className="text-text-secondary text-sm">+91 77025 28817</p>
+                <Phone className="w-5 h-5 text-gaming-accent" />
+                <p className="text-gaming-text-secondary text-sm">+91 77025 28817</p>
               </div>
               
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-accent-primary" />
-                <p className="text-text-secondary text-sm">info@karthikeyagamesgalaxy.com</p>
+                <Mail className="w-5 h-5 text-gaming-accent" />
+                <p className="text-gaming-text-secondary text-sm">info@kgg.com</p>
               </div>
               
               <div className="flex items-center space-x-3">
-                <Clock className="w-5 h-5 text-accent-primary" />
-                <p className="text-text-secondary text-sm">10:00 AM - 10:00 PM</p>
+                <Clock className="w-5 h-5 text-gaming-accent" />
+                <p className="text-gaming-text-secondary text-sm">10:00 AM - 11:00 PM</p>
               </div>
             </div>
           </div>
