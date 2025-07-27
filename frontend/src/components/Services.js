@@ -34,7 +34,7 @@ const Services = () => {
 
   if (loading) {
     return (
-      <section id="services" className="py-20 px-4 bg-gaming-dark">
+      <section id="services" className="py-20 px-4 bg-gaming-lighter">
         <div className="container mx-auto">
           <div className="text-center">
             <div className="inline-flex items-center space-x-2 animate-pulse">
