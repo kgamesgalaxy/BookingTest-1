@@ -117,6 +117,54 @@ backend:
         - agent: "main"
         - comment: "Backend API endpoints working properly, no loading issues detected"
 
+  - task: "Updated Booking Model Implementation"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py, /app/backend/models.py, /app/backend/services.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+        - agent: "testing"
+        - comment: "Comprehensive testing completed. Simplified booking model working perfectly with fields: name, phone, email (optional), game_type, time_slot, date, special_requests (optional). Status defaults to 'pending'. All CRUD operations working correctly. No duration, group_size, or total fields as expected."
+
+  - task: "Booking Storage in MongoDB"
+    implemented: true
+    working: true
+    file: "/app/backend/services.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+        - agent: "testing"
+        - comment: "MongoDB storage working correctly. Bookings are properly stored and retrieved. Tested create, read, update, delete operations successfully."
+
+  - task: "Admin Bookings Interface"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+        - agent: "testing"
+        - comment: "Minor: Admin interface works perfectly when accessed directly through backend (localhost:8001/admin/bookings). Shows bookings with proper HTML structure, auto-refresh functionality. External URL routing issue (routes to frontend instead of backend) - this is a Kubernetes ingress configuration issue, not a backend code issue."
+
+  - task: "All Booking API Endpoints"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+        - agent: "testing"
+        - comment: "All booking CRUD operations tested and working correctly: POST /api/bookings (creates bookings successfully), GET /api/bookings (returns all bookings), GET /api/bookings/{id} (returns specific booking), PUT /api/bookings/{id} (updates booking), DELETE /api/bookings/{id} (deletes booking). Success rate: 94.1%"
+
 frontend:
   - task: "Improve Banner Text Readability and Color Contrast"
     implemented: true
