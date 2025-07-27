@@ -32,6 +32,7 @@ const BookingPage = () => {
     { id: 'playstation', name: 'PlayStation', icon: '🎮' },
     { id: 'playstation_steering', name: 'PlayStation + Steering', icon: '🏎️' },
     { id: 'xbox', name: 'Xbox', icon: '🎮' },
+    { id: 'nintendo_switch', name: 'Nintendo Switch', icon: '🕹️' },
     { id: 'vr', name: 'VR', icon: '🥽' },
     { id: 'board_games', name: 'Board Games', icon: '🎲' }
   ];
