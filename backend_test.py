@@ -154,7 +154,7 @@ class BackendTester:
         return False
     
     def test_booking_api(self):
-        """Test Booking API endpoints"""
+        """Test Booking API endpoints with simplified booking model"""
         print("\n📅 Testing Booking API...")
         
         # Test GET all bookings first
@@ -175,15 +175,13 @@ class BackendTester:
             self.log_result("Booking API - GET All Bookings", False, f"Connection error: {str(e)}")
             return False
         
-        # Test POST create booking
+        # Test POST create booking with simplified model (no duration, group_size, total)
         booking_data = {
             "name": "Arjun Kumar",
             "phone": "+91 9876543210",
             "email": "arjun.kumar@email.com",
             "game_type": "PlayStation 5",
-            "duration": 2,
             "time_slot": "3:00 PM",
-            "group_size": 4,
             "date": (datetime.now() + timedelta(days=1)).isoformat(),
             "special_requests": "Birthday celebration setup"
         }
@@ -197,19 +195,19 @@ class BackendTester:
             
             if response.status_code == 200:
                 booking_response = response.json()
-                required_fields = ['id', 'name', 'phone', 'game_type', 'duration', 'total', 'status']
+                # Updated required fields for simplified booking model
+                required_fields = ['id', 'name', 'phone', 'game_type', 'time_slot', 'date', 'status']
                 missing_fields = [field for field in required_fields if field not in booking_response]
                 
                 if not missing_fields:
                     booking_id = booking_response['id']
-                    total = booking_response.get('total', 0)
+                    status = booking_response.get('status', '')
                     
-                    # Verify total calculation (group rate: 100 * 2 hours * 4 people = 800)
-                    expected_total = 100 * 2 * 4  # group rate for 4 people
-                    if total == expected_total:
+                    # Verify default status is "pending"
+                    if status == "pending":
                         self.log_result("Booking API - POST Create Booking", True)
-                        self.log_result("Booking API - Price Calculation", True)
-                        print(f"   💰 Booking created with ID: {booking_id}, Total: ₹{total}")
+                        self.log_result("Booking API - Default Status", True)
+                        print(f"   📝 Booking created with ID: {booking_id}, Status: {status}")
                         
                         # Test GET specific booking
                         self.test_get_specific_booking(booking_id)
@@ -222,7 +220,7 @@ class BackendTester:
                         
                         return True
                     else:
-                        self.log_result("Booking API - Price Calculation", False, f"Expected: {expected_total}, Got: {total}")
+                        self.log_result("Booking API - Default Status", False, f"Expected: pending, Got: {status}")
                 else:
                     self.log_result("Booking API - POST Create Booking", False, f"Missing fields: {missing_fields}")
             else:
