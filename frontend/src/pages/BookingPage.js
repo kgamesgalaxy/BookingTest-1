@@ -196,7 +196,7 @@ const BookingPage = () => {
                           <SelectValue placeholder="Select game type" />
                         </SelectTrigger>
                         <SelectContent>
-                          {gameTypes?.map((game) => (
+                          {gameTypes.map((game) => (
                             <SelectItem key={game.id} value={game.id}>
                               {getGameTypeDisplay(game)}
                             </SelectItem>
