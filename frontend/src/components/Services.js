@@ -142,21 +142,21 @@ const Services = () => {
           <div className="max-w-3xl mx-auto">
             <div className="bg-gaming-light/80 backdrop-blur-sm rounded-3xl p-8 border border-gaming-border shadow-gaming-lg hover:shadow-gaming-glow transition-all duration-300">
               <h3 className="text-2xl font-bold text-gaming-text mb-4">
-                One Price, All Platforms
+                Flexible Pricing, All Platforms
               </h3>
               <p className="text-gaming-text-secondary mb-6">
-                Access all gaming services at our flat hourly rate
+                Pricing varies by game and platform - starting from our base rate
               </p>
               
               <div className="flex items-center justify-center space-x-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-gaming-accent subtle-text">₹120</div>
+                  <div className="text-4xl font-bold text-gaming-accent subtle-text">₹150+</div>
                   <div className="text-gaming-text-secondary">per hour</div>
                 </div>
                 <div className="w-px h-12 bg-gaming-border"></div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gaming-text">All Platforms</div>
-                  <div className="text-gaming-text-secondary">included</div>
+                  <div className="text-gaming-text-secondary">available</div>
                 </div>
               </div>
               
