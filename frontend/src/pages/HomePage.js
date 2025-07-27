@@ -10,13 +10,11 @@ import Footer from '../components/Footer';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gaming-dark text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gaming-lighter text-gaming-text overflow-x-hidden">
       <Header />
       <Hero />
       <FeaturedGames />
       <Services />
-      <Gallery />
-      <Pricing />
       <Contact />
       <Footer />
     </div>
