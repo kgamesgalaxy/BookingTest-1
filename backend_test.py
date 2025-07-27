@@ -413,6 +413,8 @@ class BackendTester:
         except Exception as e:
             self.log_result("Admin Interface", False, f"Connection error: {str(e)}")
         return False
+    
+    def test_seed_endpoint(self):
         """Test database seeding endpoint"""
         print("\n🌱 Testing Seed Database Endpoint...")
         try:
