@@ -151,7 +151,7 @@ const Hero = () => {
                     <Clock className="w-8 h-8" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gaming-accent">₹120</div>
+                    <div className="text-3xl font-bold text-gaming-accent">₹150+</div>
                     <div className="text-gaming-text-secondary font-medium">Per Hour</div>
                   </div>
                 </div>
