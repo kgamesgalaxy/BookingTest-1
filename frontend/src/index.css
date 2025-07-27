@@ -274,6 +274,6 @@ a:focus-visible {
 
 /* Selection */
 ::selection {
-  background: var(--gaming-accent);
-  color: var(--gaming-dark);
+  background: var(--gaming-accent-light);
+  color: var(--gaming-text);
 }
