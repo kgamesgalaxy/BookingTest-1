@@ -33,23 +33,25 @@ body {
 
 /* Custom Utility Classes */
 @layer utilities {
-  .bg-gaming-dark { background-color: var(--gaming-dark); }
-  .bg-gaming-darker { background-color: var(--gaming-darker); }
+  .bg-gaming-light { background-color: var(--gaming-light); }
+  .bg-gaming-lighter { background-color: var(--gaming-lighter); }
   .bg-gaming-card { background-color: var(--gaming-card); }
   .bg-gaming-accent { background-color: var(--gaming-accent); }
   .bg-gaming-accent-hover { background-color: var(--gaming-accent-hover); }
+  .bg-gaming-accent-light { background-color: var(--gaming-accent-light); }
   
   .text-gaming-text { color: var(--gaming-text); }
   .text-gaming-text-secondary { color: var(--gaming-text-secondary); }
   .text-gaming-text-muted { color: var(--gaming-text-muted); }
   .text-gaming-accent { color: var(--gaming-accent); }
-  .text-gaming-dark { color: var(--gaming-dark); }
+  .text-gaming-light { color: var(--gaming-light); }
   
   .border-gaming-border { border-color: var(--gaming-border); }
   .border-gaming-accent { border-color: var(--gaming-accent); }
   
+  .shadow-gaming { box-shadow: var(--gaming-shadow); }
+  .shadow-gaming-lg { box-shadow: var(--gaming-shadow-lg); }
   .shadow-gaming-glow { box-shadow: var(--gaming-glow); }
-  .shadow-gaming-glow-strong { box-shadow: var(--gaming-glow-strong); }
 }
 
 /* Custom Animations */
