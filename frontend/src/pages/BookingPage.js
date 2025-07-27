@@ -27,8 +27,16 @@ const BookingPage = () => {
     special_requests: ''
   });
 
-  // API hooks
-  const { data: gameTypes, loading: gameTypesLoading } = useApi(gameTypeService.getAll, []);
+  // Hardcoded game types list
+  const gameTypes = [
+    { id: 'playstation', name: 'PlayStation', icon: '🎮' },
+    { id: 'playstation_steering', name: 'PlayStation + Steering', icon: '🏎️' },
+    { id: 'xbox', name: 'Xbox', icon: '🎮' },
+    { id: 'vr', name: 'VR', icon: '🥽' },
+    { id: 'board_games', name: 'Board Games', icon: '🎲' }
+  ];
+
+  // API hooks - only keeping settings for contact info
   const { data: settings, loading: settingsLoading } = useApi(settingsService.get, []);
   const { mutate: createBooking, loading: bookingLoading } = useApiMutation(bookingService.create);
 
