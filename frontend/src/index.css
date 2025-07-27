@@ -2,356 +2,277 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
+
+/* Custom Gaming Theme Variables */
+:root {
+  --gaming-dark: #0a0a0b;
+  --gaming-darker: #050505;
+  --gaming-card: #111114;
+  --gaming-border: #1a1a1f;
+  --gaming-accent: #00d4ff;
+  --gaming-accent-hover: #00b8e6;
+  --gaming-accent-dark: #0099cc;
+  --gaming-text: #ffffff;
+  --gaming-text-secondary: #b4b4b8;
+  --gaming-text-muted: #6b6b70;
+  --gaming-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --gaming-glow-strong: 0 0 40px rgba(0, 212, 255, 0.5);
+}
 
 body {
-    margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: rgb(var(--bg-primary));
-    color: rgb(var(--text-primary));
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--gaming-dark);
+  color: var(--gaming-text);
+  overflow-x: hidden;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+/* Custom Utility Classes */
+@layer utilities {
+  .bg-gaming-dark { background-color: var(--gaming-dark); }
+  .bg-gaming-darker { background-color: var(--gaming-darker); }
+  .bg-gaming-card { background-color: var(--gaming-card); }
+  .bg-gaming-accent { background-color: var(--gaming-accent); }
+  .bg-gaming-accent-hover { background-color: var(--gaming-accent-hover); }
+  
+  .text-gaming-text { color: var(--gaming-text); }
+  .text-gaming-text-secondary { color: var(--gaming-text-secondary); }
+  .text-gaming-text-muted { color: var(--gaming-text-muted); }
+  .text-gaming-accent { color: var(--gaming-accent); }
+  .text-gaming-dark { color: var(--gaming-dark); }
+  
+  .border-gaming-border { border-color: var(--gaming-border); }
+  .border-gaming-accent { border-color: var(--gaming-accent); }
+  
+  .shadow-gaming-glow { box-shadow: var(--gaming-glow); }
+  .shadow-gaming-glow-strong { box-shadow: var(--gaming-glow-strong); }
 }
 
-@layer base {
-  :root {
-        /* Dark Theme Base - Gaming Zone Style */
-        --bg-primary: 17, 17, 19;
-        --bg-secondary: 26, 28, 30;
-        --bg-tertiary: 38, 40, 42;
-        
-        /* Text Hierarchy */
-        --text-primary: 255, 255, 255;
-        --text-secondary: 218, 218, 218;
-        --text-muted: 161, 161, 170;
-        
-        /* Border System */
-        --border-primary: 63, 63, 63;
-        --border-subtle: 255, 255, 255, 0.1;
-        
-        /* Accent Colors */
-        --accent-primary: 218, 255, 1;
-        --accent-hover: 166, 190, 21;
-        --accent-pressed: 134, 155, 16;
-        --accent-bg: 218, 255, 1, 0.1;
-        
-        /* Shadcn compatible colors */
-        --background: 17 17 19;
-        --foreground: 255 255 255;
-        --card: 26 28 30;
-        --card-foreground: 255 255 255;
-        --popover: 26 28 30;
-        --popover-foreground: 255 255 255;
-        --primary: 218 255 1;
-        --primary-foreground: 17 17 19;
-        --secondary: 38 40 42;
-        --secondary-foreground: 255 255 255;
-        --muted: 38 40 42;
-        --muted-foreground: 161 161 170;
-        --accent: 218 255 1;
-        --accent-foreground: 17 17 19;
-        --destructive: 239 68 68;
-        --destructive-foreground: 255 255 255;
-        --border: 63 63 63;
-        --input: 38 40 42;
-        --ring: 218 255 1;
-        --radius: 0.5rem;
-    }
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
-/* Gaming Zone Custom Styles */
-@layer components {
-  .bg-primary {
-    background-color: rgb(var(--bg-primary));
-  }
-  
-  .bg-secondary {
-    background-color: rgb(var(--bg-secondary));
-  }
-  
-  .bg-tertiary {
-    background-color: rgb(var(--bg-tertiary));
-  }
-  
-  .text-primary {
-    color: rgb(var(--text-primary));
-  }
-  
-  .text-secondary {
-    color: rgb(var(--text-secondary));
-  }
-  
-  .text-muted {
-    color: rgb(var(--text-muted));
-  }
-  
-  .border-primary {
-    border-color: rgb(var(--border-primary));
-  }
-  
-  .border-subtle {
-    border-color: rgba(var(--border-subtle));
-  }
-  
-  .accent-primary {
-    color: rgb(var(--accent-primary));
-  }
-  
-  .bg-accent-primary {
-    background-color: rgb(var(--accent-primary));
-  }
-  
-  .hover-accent-primary:hover {
-    color: rgb(var(--accent-primary));
-  }
-  
-  .hover-bg-accent-primary:hover {
-    background-color: rgb(var(--accent-primary));
-  }
-  
-  .btn-primary {
-    background-color: rgb(var(--accent-primary));
-    color: rgb(var(--bg-primary));
-    border-radius: 12px;
-    padding: 16px 32px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .btn-primary:hover {
-    background-color: rgb(var(--accent-hover));
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(var(--accent-primary), 0.4);
-    color: rgb(var(--bg-primary));
-  }
-  
-  /* Fix text visibility on accent backgrounds */
-  .bg-accent-primary {
-    background-color: rgb(var(--accent-primary));
-    color: rgb(var(--bg-primary)) !important;
-  }
-  
-  .bg-accent-primary * {
-    color: rgb(var(--bg-primary)) !important;
-  }
-  
-  .text-on-accent {
-    color: rgb(var(--bg-primary)) !important;
-  }
-  
-  .border-accent-primary {
-    border-color: rgb(var(--accent-primary));
-  }
-  
-  .hover-bg-accent-primary:hover {
-    background-color: rgb(var(--accent-primary));
-    color: rgb(var(--bg-primary)) !important;
-  }
-  
-  .hover-bg-accent-primary:hover * {
-    color: rgb(var(--bg-primary)) !important;
-  }
-  
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  .btn-primary:hover::before {
-    left: 100%;
-  }
-  
-  .feature-card {
-    background-color: rgb(var(--bg-secondary));
-    border: 1px solid rgba(var(--border-subtle));
-    border-radius: 16px;
-    padding: 32px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-8px);
-    border-color: rgb(var(--accent-primary));
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-  }
-  
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, rgb(var(--accent-primary)), transparent);
+@keyframes fade-in-up {
+  from {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(30px);
   }
-  
-  .feature-card:hover::before {
+  to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--gaming-accent); }
+  50% { box-shadow: 0 0 20px var(--gaming-accent), 0 0 30px var(--gaming-accent); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Delay Classes */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Gaming Card Component */
+.gaming-card {
+  background: var(--gaming-card);
+  border: 1px solid var(--gaming-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gaming-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--gaming-accent)/10, transparent);
+  transition: left 0.5s;
+}
+
+.gaming-card:hover::before {
+  left: 100%;
+}
+
+.gaming-card:hover {
+  border-color: var(--gaming-accent);
+  box-shadow: var(--gaming-glow);
+  transform: translateY(-5px);
+}
+
+/* Gaming Button */
+.gaming-btn {
+  background: var(--gaming-accent);
+  color: var(--gaming-dark);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gaming-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.gaming-btn:hover::before {
+  left: 100%;
+}
+
+.gaming-btn:hover {
+  background: var(--gaming-accent-hover);
+  box-shadow: var(--gaming-glow);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gaming-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gaming-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gaming-accent-hover);
+}
+
+/* Glass Morphism Effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neumorphism Effect */
+.neumorphism {
+  background: var(--gaming-card);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.3),
+    -8px -8px 16px rgba(255, 255, 255, 0.05);
+}
+
+/* Neon Text Effect */
+.neon-text {
+  color: var(--gaming-accent);
+  text-shadow: 
+    0 0 5px var(--gaming-accent),
+    0 0 10px var(--gaming-accent),
+    0 0 15px var(--gaming-accent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gaming-card {
+    border-radius: 12px;
   }
   
-  /* Floating Animation */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+  .gaming-btn {
+    padding: 10px 20px;
+    font-size: 13px;
   }
-  
-  .float-animation {
-    animation: float 6s ease-in-out infinite;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-  
-  /* Glow Effect */
-  .glow-effect {
-    box-shadow: 0 0 20px rgba(var(--accent-primary), 0.5);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .glow-effect:hover {
-    box-shadow: 0 0 30px rgba(var(--accent-primary), 0.8);
-  }
-  
-  /* Pulse Ring */
-  @keyframes pulse-ring {
-    0% {
-      transform: scale(0.8);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-  
-  .pulse-ring {
-    animation: pulse-ring 2s infinite;
-  }
-  
-  /* Gradient Text */
-  .gradient-text {
-    background: linear-gradient(45deg, rgb(var(--accent-primary)), rgb(var(--text-primary)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Interactive Card Hover */
-  .interactive-card {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .interactive-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(var(--accent-primary), 0.1), transparent);
-    transition: left 0.5s;
-  }
-  
-  .interactive-card:hover::after {
-    left: 100%;
-  }
-  
-  .interactive-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(var(--accent-primary), 0.15);
-  }
-  
-  /* Smooth Scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: rgb(var(--bg-secondary));
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgb(var(--accent-primary));
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--accent-hover));
-  }
-  
-  /* Loading Animation */
-  @keyframes loading {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-  
-  .loading-animation {
-    animation: loading 1.5s ease-in-out infinite;
-  }
-  
-  /* Backdrop Blur Support */
-  .backdrop-blur-sm {
-    backdrop-filter: blur(4px);
-  }
-  
-  .backdrop-blur-md {
-    backdrop-filter: blur(8px);
-  }
-  
-  /* Mobile Responsive Improvements */
-  @media (max-width: 768px) {
-    .feature-card {
-      padding: 24px;
-    }
-    
-    .btn-primary {
-      padding: 14px 24px;
-      font-size: 14px;
-    }
-    
-    .interactive-card:hover {
-      transform: translateY(-2px) scale(1.01);
-    }
-  }
-  
-  /* Accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-  }
+}
+
+/* Focus States */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gaming-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--gaming-accent);
+  color: var(--gaming-dark);
 }
