@@ -23,9 +23,7 @@ const BookingPage = () => {
     phone: '',
     email: '',
     game_type: '',
-    duration: 1,
     time_slot: '',
-    group_size: 1,
     special_requests: ''
   });
 
