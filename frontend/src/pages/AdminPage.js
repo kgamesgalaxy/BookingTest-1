@@ -317,8 +317,56 @@ const AdminPage = () => {
                   )}
                   
                   <div className="mt-4 pt-4 border-t border-gaming-border">
-                    <div className="text-xs text-gaming-text-muted">
-                      Booking created: {formatDateTime(booking.created_at)}
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                      <div className="text-xs text-gaming-text-muted">
+                        Booking created: {formatDateTime(booking.created_at)}
+                      </div>
+                      
+                      {/* Action buttons */}
+                      <div className="flex gap-2">
+                        {booking.status === 'pending' && (
+                          <>
+                            <Button 
+                              size="sm"
+                              onClick={() => updateBookingStatus(booking.id, 'confirmed')}
+                              className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-1"
+                            >
+                              <CheckCircle className="w-4 h-4" />
+                              Approve
+                            </Button>
+                            <Button 
+                              size="sm"
+                              onClick={() => updateBookingStatus(booking.id, 'cancelled')}
+                              className="bg-red-500 hover:bg-red-600 text-white flex items-center gap-1"
+                            >
+                              <XCircle className="w-4 h-4" />
+                              Decline
+                            </Button>
+                          </>
+                        )}
+                        
+                        {booking.status === 'confirmed' && (
+                          <Button 
+                            size="sm"
+                            onClick={() => updateBookingStatus(booking.id, 'cancelled')}
+                            className="bg-red-500 hover:bg-red-600 text-white flex items-center gap-1"
+                          >
+                            <XCircle className="w-4 h-4" />
+                            Cancel
+                          </Button>
+                        )}
+                        
+                        {booking.status === 'cancelled' && (
+                          <Button 
+                            size="sm"
+                            onClick={() => updateBookingStatus(booking.id, 'confirmed')}
+                            className="bg-green-500 hover:bg-green-600 text-white flex items-center gap-1"
+                          >
+                            <CheckCircle className="w-4 h-4" />
+                            Reactivate
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </CardContent>
