@@ -98,35 +98,35 @@ const Header = () => {
         <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <nav className="py-4 space-y-4 border-t border-gaming-border mt-4">
+          <nav className="py-4 space-y-4 border-t border-gaming-border mt-4 bg-gaming-light/95 backdrop-blur-lg rounded-lg shadow-gaming-lg">
             <button 
               onClick={() => scrollToSection('games')}
-              className="block w-full text-left text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium py-2"
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
             >
               Games
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className="block w-full text-left text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium py-2"
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium py-2"
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
             >
               Contact
             </button>
-            <div className="pt-4 space-y-3">
+            <div className="pt-4 space-y-3 px-4">
               <Button 
                 variant="ghost" 
-                className="w-full justify-center text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10"
+                className="w-full justify-center text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 border border-gaming-border"
               >
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now
               </Button>
               <Button 
-                className="w-full bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold shadow-gaming"
+                className="w-full bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold shadow-gaming py-3"
                 onClick={() => navigate('/booking')}
               >
                 <Calendar className="w-4 h-4 mr-2" />
