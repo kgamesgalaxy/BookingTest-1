@@ -27,6 +27,14 @@ const BookingPage = () => {
     special_requests: ''
   });
 
+  // Set page title
+  useEffect(() => {
+    document.title = "Book Your Gaming Session - Karthikeya Games Galaxy";
+    return () => {
+      document.title = "Karthikeya Games Galaxy - Don't be bored get on board!";
+    };
+  }, []);
+
   // Hardcoded game types list
   const gameTypes = [
     { id: 'playstation', name: 'PlayStation', icon: '🎮' },
