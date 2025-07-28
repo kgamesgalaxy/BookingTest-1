@@ -90,11 +90,19 @@ const BookingPage = () => {
         date: selectedDate.toISOString()
       };
 
-      await createBooking(bookingData);
-
+      const response = await createBooking(bookingData);
+      
+      // Show success message with reference number
       toast({
-        title: "Booking Confirmed!",
-        description: `Your gaming session has been booked for ${format(selectedDate, 'PPP')} at ${formData.time_slot}. We'll contact you with pricing details.`,
+        title: "Booking Confirmed! 🎮",
+        description: (
+          <div className="space-y-2">
+            <p className="font-medium">Your Reference Number: <span className="text-gaming-accent font-bold text-lg">{response.reference_number}</span></p>
+            <p>Session: {format(selectedDate, 'PPP')} at {formData.time_slot}</p>
+            <p className="text-sm text-gaming-text-secondary">⚠️ Please save this reference number! You can use it to cancel your booking up to 1 hour before your session.</p>
+          </div>
+        ),
+        duration: 10000, // Show for 10 seconds
       });
 
       // Reset form
@@ -108,6 +116,9 @@ const BookingPage = () => {
       });
       setSelectedDate(null);
       setAvailableSlots([]);
+
+      // Show reference number in alert as well
+      alert(`🎮 BOOKING CONFIRMED!\n\nYour Reference Number: ${response.reference_number}\n\nSession: ${format(selectedDate, 'PPP')} at ${formData.time_slot}\n\n⚠️ IMPORTANT: Please save this reference number! You can use it to cancel your booking up to 1 hour before your session time.\n\nWe'll contact you with pricing details soon.`);
     } catch (error) {
       // Error is already handled by useApiMutation
       console.error('Booking error:', error);
