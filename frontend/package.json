@@ -59,7 +59,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "prebuild": "rm -f package-lock.json"
+    "prebuild": "rm -f package-lock.json && rm -rf build && mkdir -p build"
   },
   "browserslist": {
     "production": [
