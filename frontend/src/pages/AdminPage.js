@@ -16,7 +16,7 @@ const AdminPage = () => {
   useEffect(() => {
     document.title = "Admin Dashboard - Karthikeya's Games Galaxy";
     return () => {
-      document.title = "Karthikeya's Games Galaxy - Don't be bored get on board!";
+      document.title = "Karthikeya's Games Galaxy - Don't be bored , get ON-BOARD";
     };
   }, []);
 
