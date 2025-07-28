@@ -147,14 +147,19 @@ const AdminPage = () => {
       // Try primary URL first (emergent agent)
       if (primaryUrl) {
         try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+          
           response = await fetch(`${primaryUrl}/api/bookings/${bookingId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ status: newStatus }),
-            signal: AbortSignal.timeout(10000) // 10 second timeout
+            signal: controller.signal
           });
+          
+          clearTimeout(timeoutId);
           
           if (response.ok) {
             backendUrl = primaryUrl;
@@ -165,14 +170,19 @@ const AdminPage = () => {
           console.warn('Primary backend URL failed, trying fallback:', primaryError.message);
           
           // Try fallback URL (localhost)
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout for localhost
+          
           response = await fetch(`${fallbackUrl}/api/bookings/${bookingId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({ status: newStatus }),
-            signal: AbortSignal.timeout(5000) // 5 second timeout for localhost
+            signal: controller.signal
           });
+          
+          clearTimeout(timeoutId);
           
           if (response.ok) {
             backendUrl = fallbackUrl;
