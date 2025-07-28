@@ -28,6 +28,10 @@ const BookingPage = () => {
     time_slot: '',
     special_requests: ''
   });
+  
+  // Modal state for reference number
+  const [showReferenceModal, setShowReferenceModal] = useState(false);
+  const [bookingResponse, setBookingResponse] = useState(null);
 
   // Set page title
   useEffect(() => {
