@@ -50,7 +50,7 @@ const Gallery = () => {
             Gaming Gallery
           </h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-            Take a look at our modern gaming setup and facilities. See why gamers love spending time at Karthikeya Games Galaxy.
+            Take a look at our modern gaming setup and facilities. See why gamers love spending time at Karthikeya's Games Galaxy.
           </p>
         </div>
 
