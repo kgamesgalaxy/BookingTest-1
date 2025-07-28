@@ -1,11 +1,10 @@
 [build]
   publish = "frontend/build"
-  command = "cd frontend && yarn install --frozen-lockfile --prefer-offline && yarn build"
+  command = "cd frontend && yarn install && yarn build"
 
 [build.environment]
   NODE_VERSION = "18.19.0"
   YARN_VERSION = "1.22.19"
-  NPM_VERSION = "10.2.3"
   CI = "true"
 
 [build.processing]
