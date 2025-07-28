@@ -1,0 +1,17 @@
+{
+  "name": "karthikeya-games-galaxy",
+  "version": "1.0.0",
+  "description": "Gaming zone website with booking system",
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.22.x"
+  },
+  "scripts": {
+    "build": "cd frontend && yarn install --frozen-lockfile && yarn build",
+    "start": "cd frontend && yarn start",
+    "test": "cd frontend && yarn test"
+  },
+  "keywords": ["gaming", "booking", "react", "fastapi"],
+  "author": "Karthikeya Games Galaxy",
+  "license": "MIT"
+}
