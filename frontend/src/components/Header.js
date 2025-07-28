@@ -55,6 +55,13 @@ const Header = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gaming-accent transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
+              onClick={() => navigate('/cancel')}
+              className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
+            >
+              Cancel Booking
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gaming-accent transition-all duration-200 group-hover:w-full"></span>
+            </button>
+            <button 
               onClick={() => scrollToSection('contact')}
               className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
             >
