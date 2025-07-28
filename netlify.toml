@@ -1,6 +1,6 @@
 [build]
   publish = "frontend/build"
-  command = "cd frontend && rm -f package-lock.json && (yarn install --production=false || npm install) && (yarn build || npm run build)"
+  command = "cd frontend && rm -f package-lock.json && yarn install --frozen-lockfile && yarn build"
 
 [build.environment]
   NODE_VERSION = "18"
