@@ -75,6 +75,37 @@ const AdminPage = () => {
     }
   };
 
+  const updateBookingStatus = async (bookingId, newStatus) => {
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+      const response = await fetch(`${backendUrl}/api/bookings/${bookingId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const updatedBooking = await response.json();
+      
+      // Update the booking in the local state
+      setBookings(prevBookings => 
+        prevBookings.map(booking => 
+          booking.id === bookingId ? updatedBooking : booking
+        )
+      );
+      
+      console.log(`Booking ${bookingId} updated to ${newStatus}`);
+    } catch (err) {
+      console.error('Error updating booking status:', err);
+      setError(`Failed to update booking status: ${err.message}`);
+    }
+  };
+
   // Show login page if not authenticated
   if (!isLoggedIn) {
     return <AdminLogin onLogin={handleLogin} />;
