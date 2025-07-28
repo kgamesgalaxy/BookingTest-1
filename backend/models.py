@@ -2,6 +2,13 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 import uuid
+import random
+import string
+
+def generate_booking_reference():
+    """Generate a unique booking reference starting with KGG"""
+    random_suffix = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    return f"KGG{random_suffix}"
 
 class BookingCreate(BaseModel):
     name: str
