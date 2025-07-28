@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Netlify build failing due to Node.js version incompatibility - react-router-dom@7.5.1 requires Node.js >=20.0.0 but Netlify was using 18.20.8"
+user_problem_statement: "Mobile UI issues after deployment - mobile menu background not solid, hero and header overlapping, overall not user-friendly on mobile"
 
 backend:
   - task: "API Integration for Game Types"
