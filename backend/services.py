@@ -67,6 +67,13 @@ class BookingService:
         result = await self.collection.delete_one({"id": booking_id})
         return result.deleted_count > 0
     
+    async def get_booking_by_reference(self, reference_number: str) -> Optional[Booking]:
+        """Get booking by reference number"""
+        booking_doc = await self.collection.find_one({"reference_number": reference_number})
+        if booking_doc:
+            return Booking(**booking_doc)
+        return None
+    
     async def get_bookings_by_date(self, date: datetime) -> List[Booking]:
         """Get bookings for a specific date"""
         start_date = datetime.combine(date.date(), datetime.min.time())
