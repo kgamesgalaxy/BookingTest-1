@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://karthikeya-games-galaxy.netlify.app/sitemap.xml
+
+# Disallow specific paths
+Disallow: /admin
+Disallow: /api/
