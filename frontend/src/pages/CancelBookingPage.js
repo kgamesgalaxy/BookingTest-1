@@ -8,6 +8,7 @@ import { Badge } from '../components/ui/badge';
 import { AlertCircle, XCircle, ArrowLeft, Calendar, Clock, User, Phone, Mail, Gamepad2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 import { format } from 'date-fns';
+import { bookingService } from '../services/api';
 
 const CancelBookingPage = () => {
   const navigate = useNavigate();
