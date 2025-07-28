@@ -1,10 +1,11 @@
 [build]
   publish = "frontend/build"
-  command = "cd frontend && rm -f package-lock.json && yarn install --production=false && yarn build"
+  command = "cd frontend && rm -f package-lock.json && (yarn install --production=false || npm install) && (yarn build || npm run build)"
 
 [build.environment]
   NODE_VERSION = "18"
   YARN_VERSION = "1.22.19"
+  NPM_VERSION = "10"
   CI = "true"
 
 [[redirects]]
