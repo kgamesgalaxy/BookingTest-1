@@ -29,9 +29,9 @@ const BookingPage = () => {
 
   // Set page title
   useEffect(() => {
-    document.title = "Book Your Gaming Session - Karthikeya Games Galaxy";
+    document.title = "Book Your Gaming Session - Karthikeya's Games Galaxy";
     return () => {
-      document.title = "Karthikeya Games Galaxy - Don't be bored get on board!";
+      document.title = "Karthikeya's Games Galaxy - Don't be bored get on board!";
     };
   }, []);
 
