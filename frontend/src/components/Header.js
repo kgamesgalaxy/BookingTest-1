@@ -29,9 +29,9 @@ const Header = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-gaming-light/95 backdrop-blur-lg border-b border-gaming-border shadow-gaming-lg' 
-        : 'bg-transparent'
+        : 'bg-gaming-light/80 backdrop-blur-sm'
     }`}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="cursor-pointer transform hover:scale-105 transition-transform duration-200" onClick={() => navigate('/')}>
