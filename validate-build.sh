@@ -3,7 +3,23 @@
 # Validate Netlify build artifacts
 echo "🔍 Validating Netlify build artifacts..."
 
-BUILD_DIR="/app/frontend/build"
+# Determine build directory path dynamically
+if [ -d "/opt/build/repo/frontend/build" ]; then
+    BUILD_DIR="/opt/build/repo/frontend/build"
+elif [ -d "frontend/build" ]; then
+    BUILD_DIR="frontend/build"
+elif [ -d "/app/frontend/build" ]; then
+    BUILD_DIR="/app/frontend/build"
+else
+    echo "❌ Build directory not found in any expected location"
+    echo "Searched locations:"
+    echo "  - /opt/build/repo/frontend/build (Netlify)"
+    echo "  - frontend/build (relative)"
+    echo "  - /app/frontend/build (local)"
+    exit 1
+fi
+
+echo "📁 Using build directory: $BUILD_DIR"
 
 # Check if build directory exists
 if [ ! -d "$BUILD_DIR" ]; then
