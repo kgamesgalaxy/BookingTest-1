@@ -119,6 +119,12 @@ const Header = () => {
               Services
             </button>
             <button 
+              onClick={() => navigate('/cancel')}
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
+            >
+              Cancel Booking
+            </button>
+            <button 
               onClick={() => scrollToSection('contact')}
               className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
             >
