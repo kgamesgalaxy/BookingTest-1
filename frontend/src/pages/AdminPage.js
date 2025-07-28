@@ -283,9 +283,11 @@ const AdminPage = () => {
                     <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
                       booking.status === 'pending' 
                         ? 'bg-yellow-100 text-yellow-800' 
-                        : 'bg-green-100 text-green-800'
+                        : booking.status === 'confirmed'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
                     }`}>
-                      {booking.status}
+                      {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
                     </span>
                   </div>
                 </CardHeader>
