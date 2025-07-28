@@ -128,14 +128,59 @@ const AdminPage = () => {
 
   const updateBookingStatus = async (bookingId, newStatus) => {
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
-      const response = await fetch(`${backendUrl}/api/bookings/${bookingId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
+      const primaryUrl = process.env.REACT_APP_BACKEND_URL;
+      const fallbackUrl = 'http://localhost:8001';
+      
+      let response;
+      let backendUrl;
+      
+      // Try primary URL first (emergent agent)
+      if (primaryUrl) {
+        try {
+          response = await fetch(`${primaryUrl}/api/bookings/${bookingId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: newStatus }),
+            signal: AbortSignal.timeout(10000) // 10 second timeout
+          });
+          
+          if (response.ok) {
+            backendUrl = primaryUrl;
+          } else {
+            throw new Error(`Primary URL failed: ${response.status}`);
+          }
+        } catch (primaryError) {
+          console.warn('Primary backend URL failed, trying fallback:', primaryError.message);
+          
+          // Try fallback URL (localhost)
+          response = await fetch(`${fallbackUrl}/api/bookings/${bookingId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: newStatus }),
+            signal: AbortSignal.timeout(5000) // 5 second timeout for localhost
+          });
+          
+          if (response.ok) {
+            backendUrl = fallbackUrl;
+          } else {
+            throw new Error(`Both primary and fallback URLs failed`);
+          }
+        }
+      } else {
+        // No primary URL, use fallback directly
+        response = await fetch(`${fallbackUrl}/api/bookings/${bookingId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: newStatus }),
+        });
+        backendUrl = fallbackUrl;
+      }
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -150,7 +195,7 @@ const AdminPage = () => {
         )
       );
       
-      console.log(`Booking ${bookingId} updated to ${newStatus}`);
+      console.log(`Booking ${bookingId} updated to ${newStatus} via ${backendUrl}`);
     } catch (err) {
       console.error('Error updating booking status:', err);
       setError(`Failed to update booking status: ${err.message}`);
