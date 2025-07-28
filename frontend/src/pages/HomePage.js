@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 const HomePage = () => {
   // Set page title
   useEffect(() => {
-    document.title = "Karthikeya Games Galaxy - Don't be bored get on board!";
+    document.title = "Karthikeya's Games Galaxy - Don't be bored get on board!";
   }, []);
 
   return (
