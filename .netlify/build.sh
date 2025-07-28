@@ -21,7 +21,7 @@ yarn --version
 
 # Install dependencies with yarn
 echo "📦 Installing dependencies..."
-yarn install --frozen-lockfile --network-timeout 100000
+yarn install --network-timeout 100000
 
 # Verify dependencies are installed
 echo "🔍 Verifying dependencies..."
