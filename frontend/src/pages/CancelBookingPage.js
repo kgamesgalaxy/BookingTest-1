@@ -30,23 +30,7 @@ const CancelBookingPage = () => {
 
     setLoading(true);
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
-      const response = await fetch(`${backendUrl}/api/bookings/reference/${referenceNumber.trim()}`);
-      
-      if (!response.ok) {
-        if (response.status === 404) {
-          toast({
-            title: "Booking Not Found",
-            description: "No booking found with this reference number. Please check and try again.",
-            variant: "destructive"
-          });
-        } else {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return;
-      }
-      
-      const bookingData = await response.json();
+      const bookingData = await bookingService.getByReference(referenceNumber.trim());
       setBooking(bookingData);
       
       // Check if booking is already cancelled
@@ -60,11 +44,21 @@ const CancelBookingPage = () => {
       
     } catch (error) {
       console.error('Error fetching booking:', error);
-      toast({
-        title: "Error",
-        description: "Failed to fetch booking details. Please try again.",
-        variant: "destructive"
-      });
+      
+      // Check if it's a 404 error (booking not found)
+      if (error.message.includes('404') || error.message.includes('not found')) {
+        toast({
+          title: "Booking Not Found",
+          description: "No booking found with this reference number. Please check and try again.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to fetch booking details. Please try again.",
+          variant: "destructive"
+        });
+      }
     } finally {
       setLoading(false);
     }
