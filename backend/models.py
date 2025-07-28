@@ -21,6 +21,7 @@ class BookingCreate(BaseModel):
 
 class Booking(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    reference_number: str = Field(default_factory=generate_booking_reference)
     name: str
     phone: str
     email: Optional[str] = None
