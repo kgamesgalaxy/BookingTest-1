@@ -90,7 +90,7 @@ const Hero = () => {
               <div className="inline-flex items-center space-x-2 bg-gaming-light/90 backdrop-blur-sm px-4 lg:px-6 py-2 lg:py-3 rounded-full border border-gaming-accent/20 mb-6 lg:mb-8 animate-fade-in-up shadow-gaming">
                 <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5 text-gaming-accent" />
                 <span className="text-gaming-accent font-semibold text-xs lg:text-sm tracking-wider uppercase">
-                  Karthikeya Games Galaxy
+                  Karthikeya's Games Galaxy
                 </span>
               </div>
 
