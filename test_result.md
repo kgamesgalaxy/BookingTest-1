@@ -198,6 +198,12 @@ frontend:
         - working: true
         - agent: "main"
         - comment: "Fixed Node.js version compatibility issue by updating netlify.toml, .nvmrc, and package.json to use Node.js 20.x. Local testing with Node.js 20.19.4 confirms build works correctly with 2.8M build directory and all required artifacts."
+        - working: false
+        - agent: "user"
+        - comment: "Netlify build succeeding but validation script failing with 'Build directory not found: /app/frontend/build' - path issue in validation script"
+        - working: true
+        - agent: "main"
+        - comment: "Fixed validation script path issue by implementing dynamic path detection for different environments (Netlify: /opt/build/repo/frontend/build, local: /app/frontend/build, relative: frontend/build). Both primary build and fallback commands now work correctly with proper validation."
 
   - task: "Frontend Build Process"
     implemented: true
