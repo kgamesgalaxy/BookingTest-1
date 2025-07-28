@@ -12,6 +12,14 @@ const AdminPage = () => {
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Set page title
+  useEffect(() => {
+    document.title = "Admin Dashboard - Karthikeya Games Galaxy";
+    return () => {
+      document.title = "Karthikeya Games Galaxy - Don't be bored get on board!";
+    };
+  }, []);
+
   const gameTypeDisplay = {
     'playstation': '🎮 PlayStation',
     'playstation_steering': '🏎️ PlayStation + Steering',
