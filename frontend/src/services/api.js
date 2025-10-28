@@ -1,73 +1,40 @@
-// Enhanced API service with fallback mechanism
+// Enhanced API service - simplified for preview environment
 class ApiService {
   constructor() {
-    // Use relative /api path - preview environment automatically proxies to backend
-    this.primaryUrl = '';  // Empty string means relative URLs
-    this.fallbackUrl = '';  // No fallback needed in preview
+    // In preview environment, all API calls go through the same domain
+    this.baseUrl = '';  // Relative URLs - preview automatically proxies /api to backend
   }
 
   async makeRequest(endpoint, options = {}) {
-    const { method = 'GET', body, headers = {}, timeout = 10000 } = options;
+    const { method = 'GET', body, headers = {}, timeout = 15000 } = options;
     
-    // Try primary URL first (emergent agent)
-    if (this.primaryUrl) {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), timeout);
-        
-        const response = await fetch(`${this.primaryUrl}/api${endpoint}`, {
-          method,
-          headers: {
-            'Content-Type': 'application/json',
-            ...headers,
-          },
-          body: body ? JSON.stringify(body) : undefined,
-          signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (response.ok) {
-          console.log(`API request successful via primary URL: ${this.primaryUrl}`);
-          return await response.json();
-        } else {
-          throw new Error(`Primary URL failed: ${response.status}`);
-        }
-      } catch (primaryError) {
-        console.warn('Primary backend URL failed, trying fallback:', primaryError.message);
-        
-        // Try fallback URL (localhost)
-        try {
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 5000); // Shorter timeout for localhost
-          
-          const response = await fetch(`${this.fallbackUrl}/api${endpoint}`, {
-            method,
-            headers: {
-              'Content-Type': 'application/json',
-              ...headers,
-            },
-            body: body ? JSON.stringify(body) : undefined,
-            signal: controller.signal
-          });
-          
-          clearTimeout(timeoutId);
-          
-          if (response.ok) {
-            console.log(`API request successful via fallback URL: ${this.fallbackUrl}`);
-            return await response.json();
-          } else {
-            throw new Error(`Fallback URL also failed: ${response.status}`);
-          }
-        } catch (fallbackError) {
-          throw new Error(`Both primary and fallback URLs failed. Primary: ${primaryError.message}, Fallback: ${fallbackError.message}`);
-        }
-      }
-    } else {
-      // No primary URL, use fallback directly
-      const response = await fetch(`${this.fallbackUrl}/api${endpoint}`, {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      
+      const response = await fetch(`/api${endpoint}`, {
         method,
         headers: {
+          'Content-Type': 'application/json',
+          ...headers,
+        },
+        body: body ? JSON.stringify(body) : undefined,
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API error (${response.status}): ${errorText}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error(`API request failed: ${method} /api${endpoint}`, error);
+      throw error;
+    }
+  }
           'Content-Type': 'application/json',
           ...headers,
         },
