@@ -41,6 +41,13 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <button 
+              onClick={() => scrollToSection('latest')}
+              className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
+            >
+              Latest
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gaming-accent transition-all duration-200 group-hover:w-full"></span>
+            </button>
+            <button 
               onClick={() => scrollToSection('games')}
               className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
             >
@@ -52,6 +59,13 @@ const Header = () => {
               className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
             >
               Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gaming-accent transition-all duration-200 group-hover:w-full"></span>
+            </button>
+            <button 
+              onClick={() => scrollToSection('announcements')}
+              className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
+            >
+              Announcements
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gaming-accent transition-all duration-200 group-hover:w-full"></span>
             </button>
             <button 
@@ -107,10 +121,22 @@ const Header = () => {
         }`}>
           <nav className="py-4 space-y-4 border-t border-gaming-border mt-4 bg-gaming-light/95 backdrop-blur-lg rounded-lg shadow-gaming-lg">
             <button 
+              onClick={() => scrollToSection('latest')}
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
+            >
+              Latest
+            </button>
+            <button 
               onClick={() => scrollToSection('games')}
               className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
             >
               Games
+            </button>
+            <button 
+              onClick={() => scrollToSection('announcements')}
+              className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
+            >
+              Announcements
             </button>
             <button 
               onClick={() => scrollToSection('services')}

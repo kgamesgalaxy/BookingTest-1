@@ -373,8 +373,8 @@ const BookingPage = () => {
                   <div className="pt-4 border-t border-gaming-border">
                     <p className="text-sm text-gaming-text-secondary">
                       Need help? Call us at{' '}
-                      <a href="tel:+917702528817" className="text-gaming-accent hover:underline font-medium">
-                        +91 77025 28817
+                      <a href="tel:+447440070177" className="text-gaming-accent hover:underline font-medium">
+                        +44 7440 070177
                       </a>
                     </p>
                   </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Star, Play, Users, Trophy } from 'lucide-react';
+import { Tilt } from './ui/tilt';
 
 const FeaturedGames = () => {
   const featuredGames = [
@@ -81,12 +82,11 @@ const FeaturedGames = () => {
         {/* Games Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {featuredGames.map((game, index) => (
-            <Card 
-              key={game.id}
-              className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300 hover:scale-105 animate-fade-in-up`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardContent className="p-0">
+            <Tilt key={game.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+              <Card 
+                className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300`}
+              >
+                <CardContent className="p-0">
                 {/* Game Image */}
                 <div className="relative overflow-hidden rounded-t-2xl">
                   <img 
@@ -143,8 +143,9 @@ const FeaturedGames = () => {
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Tilt>
           ))}
         </div>
 

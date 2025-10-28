@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useApi } from '../hooks/useApi';
 import { gameTypeService } from '../services/api';
 import { Gamepad2, Monitor, Headphones, Dice6, ArrowRight, Star } from 'lucide-react';
+import { Tilt } from './ui/tilt';
 
 const Services = () => {
   const { data: gameTypes, loading } = useApi(gameTypeService.getAll, []);
@@ -78,10 +79,9 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-12">
           {gameTypes?.map((gameType, index) => (
+            <Tilt key={gameType.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
             <Card 
-              key={gameType.id} 
-              className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300 hover:scale-105 animate-fade-in-up`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300`}
             >
               {/* Status Indicator */}
               <div className="absolute top-3 lg:top-4 right-3 lg:right-4 w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming"></div>
@@ -134,6 +134,7 @@ const Services = () => {
                 </Button>
               </CardContent>
             </Card>
+            </Tilt>
           ))}
         </div>
 

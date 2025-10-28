@@ -9,13 +9,27 @@ import {
   ModalClose
 } from './ui/modal';
 import { Button } from './ui/button';
-import { CheckCircle, Copy, Calendar, Clock } from 'lucide-react';
+import { CheckCircle, Copy, Calendar, Clock, Phone } from 'lucide-react';
 import { format } from 'date-fns';
 
-const ReferenceNumberModal = ({ isOpen, onClose, referenceNumber, bookingDetails }) => {
+const ReferenceNumberModal = ({ isOpen, onClose, referenceNumber, bookingDetails, whatsappNumber = '+447440070177' }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referenceNumber);
     // Could add a toast notification here if needed
+  };
+
+  const getWhatsAppLink = () => {
+    const base = 'https://wa.me/';
+    const lines = [
+      `Hello KGG 👋`,
+      `I'd like to confirm my booking.`,
+      referenceNumber ? `Ref: ${referenceNumber}` : null,
+      bookingDetails?.date ? `Date: ${format(bookingDetails.date, 'PPP')}` : null,
+      bookingDetails?.time_slot ? `Time: ${bookingDetails.time_slot}` : null,
+      bookingDetails?.game_type ? `Game: ${bookingDetails.game_type}` : null,
+    ].filter(Boolean);
+    const text = encodeURIComponent(lines.join('\n'));
+    return `${base}${whatsappNumber.replace(/[^\d]/g, '')}?text=${text}`;
   };
 
   return (
@@ -104,6 +118,15 @@ const ReferenceNumberModal = ({ isOpen, onClose, referenceNumber, bookingDetails
               Got it!
             </Button>
           </ModalClose>
+          <a
+            href={getWhatsAppLink()}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full sm:w-auto mt-2 sm:mt-0 inline-flex items-center justify-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-600"
+          >
+            <Phone className="h-4 w-4 mr-2" />
+            Send to WhatsApp
+          </a>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -25,7 +25,7 @@ const Footer = () => {
   const socialLinks = [
     { name: 'Facebook', icon: <Facebook className="w-5 h-5" />, href: '#' },
     { name: 'Twitter', icon: <Twitter className="w-5 h-5" />, href: '#' },
-    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, href: '#' },
+    { name: 'Instagram', icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/karthikeyasgamesgalaxy/' },
     { name: 'YouTube', icon: <Youtube className="w-5 h-5" />, href: '#' }
   ];
 
@@ -125,7 +125,7 @@ const Footer = () => {
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gaming-accent" />
-                <p className="text-gaming-text-secondary text-sm">+91 77025 28817</p>
+                <p className="text-gaming-text-secondary text-sm">+44 7440 070177</p>
               </div>
               
               <div className="flex items-center space-x-3">

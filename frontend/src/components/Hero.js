@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import { Play, ArrowRight, Gamepad2, Clock, Users, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Parallax } from './ui/parallax';
+import { ParticlesCanvas } from './ui/particles-canvas';
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -44,7 +46,8 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gaming-lighter via-gaming-light to-gaming-accent-light/20 pt-20 md:pt-24">
-      {/* Background Slider */}
+      <ParticlesCanvas count={70} />
+      {/* Background Slider with subtle parallax */}
       <div className="absolute inset-0">
         {heroSlides.map((slide, index) => (
           <div
@@ -56,7 +59,8 @@ const Hero = () => {
             <img 
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover opacity-20"
+              className="w-full h-full object-cover opacity-20 will-change-transform"
+              style={{ transform: 'translateZ(0)' }}
             />
             {/* Clean Light Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-gaming-light/95 via-gaming-light/90 to-gaming-light/95"></div>
@@ -65,8 +69,8 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Subtle Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Subtle Floating Elements, layered for depth */}
+      <div className="absolute inset-0 overflow-hidden [perspective:1200px]">
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
@@ -75,7 +79,8 @@ const Hero = () => {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${4 + Math.random() * 3}s`
+              animationDuration: `${4 + Math.random() * 3}s`,
+              transform: `translateZ(${(i % 3) * 20}px)`
             }}
           />
         ))}
@@ -86,15 +91,15 @@ const Hero = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-120px)]">
             {/* Left Content */}
-            <div className="text-left py-8 lg:py-0">
-              <div className="inline-flex items-center space-x-2 bg-gaming-light/90 backdrop-blur-sm px-4 lg:px-6 py-2 lg:py-3 rounded-full border border-gaming-accent/20 mb-6 lg:mb-8 animate-fade-in-up shadow-gaming">
+            <Parallax strength={30} className="text-left py-8 lg:py-0">
+              <div className="inline-flex items-center space-x-2 bg-gaming-light/90 backdrop-blur-sm px-4 lg:px-6 py-2 lg:py-3 rounded-full border border-gaming-accent/20 mb-6 lg:mb-8 animate-fade-in-up shadow-gaming" data-depth="0.3">
                 <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5 text-gaming-accent" />
                 <span className="text-gaming-accent font-semibold text-xs lg:text-sm tracking-wider uppercase">
                   Karthikeya's Games Galaxy
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6 leading-tight animate-fade-in-up delay-200">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6 leading-tight animate-fade-in-up delay-200" data-depth="0.5">
                 <span className="text-gaming-text">
                   {heroSlides[currentSlide].title}
                 </span>
@@ -104,12 +109,12 @@ const Hero = () => {
                 </span>
               </h1>
               
-              <p className="text-base sm:text-lg lg:text-xl text-gaming-text-secondary max-w-2xl leading-relaxed mb-8 lg:mb-10 animate-fade-in-up delay-300">
+              <p className="text-base sm:text-lg lg:text-xl text-gaming-text-secondary max-w-2xl leading-relaxed mb-8 lg:mb-10 animate-fade-in-up delay-300" data-depth="0.4">
                 {heroSlides[currentSlide].description}
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12 animate-fade-in-up delay-400">
+              <div className="flex flex-col sm:flex-row gap-4 mb-8 lg:mb-12 animate-fade-in-up delay-400" data-depth="0.6">
                 <Button 
                   size="lg"
                   className="bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-gaming-lg group"
@@ -129,7 +134,7 @@ const Hero = () => {
                   View Games
                 </Button>
               </div>
-            </div>
+            </Parallax>
 
             {/* Right Content - Stats */}
             <div className="grid grid-cols-1 gap-4 lg:gap-6 animate-fade-in-up delay-500">

@@ -17,7 +17,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-8 h-8" />,
       title: "Call Us",
-      info: "+91 77025 28817",
+      info: "+44 7440 070177",
       subInfo: "Available 24/7"
     },
     {
@@ -111,7 +111,7 @@ const Contact = () => {
                   variant="outline"
                   size="lg"
                   className="border-2 border-gaming-accent text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light px-6 lg:px-8 py-3 lg:py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-gaming text-sm lg:text-base"
-                  onClick={() => window.open('tel:+917702528817')}
+                  onClick={() => window.open('tel:+447440070177')}
                 >
                   Call Now
                 </Button>
