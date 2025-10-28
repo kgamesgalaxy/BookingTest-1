@@ -57,20 +57,27 @@ const BookingPage = () => {
 
   // Load availability when date changes
   useEffect(() => {
-    if (!selectedDate) return;
+    const loadAvailability = async () => {
+      if (!selectedDate) {
+        setAvailableSlots([]);
+        return;
+      }
+      
+      try {
+        console.log('Loading availability for date:', selectedDate);
+        const availability = await availabilityService.getByDate(selectedDate);
+        console.log('Availability response:', availability);
+        const slots = Array.isArray(availability?.time_slots) ? availability.time_slots : [];
+        console.log('Setting available slots:', slots);
+        setAvailableSlots(slots);
+      } catch (error) {
+        console.error('Error loading availability:', error);
+        setAvailableSlots([]);
+      }
+    };
+    
     loadAvailability();
-  }, [selectedDate?.getFullYear(), selectedDate?.getMonth(), selectedDate?.getDate()]);
-
-  const loadAvailability = async () => {
-    try {
-      const availability = await availabilityService.getByDate(selectedDate);
-      const slots = Array.isArray(availability?.time_slots) ? availability.time_slots : [];
-      setAvailableSlots(slots);
-    } catch (error) {
-      console.error('Error loading availability:', error);
-      setAvailableSlots([]);
-    }
-  };
+  }, [selectedDate]);
 
   const handleInputChange = (name, value) => {
     setFormData(prev => ({
