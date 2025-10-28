@@ -39,7 +39,7 @@ const Announcements = () => {
             <span className="block text-gaming-accent subtle-text">Stay Updated</span>
           </h2>
           <p className="text-base lg:text-lg text-gaming-text-secondary max-w-2xl mx-auto">
-            News, offers, and updates for gamers and families.
+            Latest news, special offers, and exciting updates from Karthikeya's Games Galaxy.
           </p>
         </div>
 
