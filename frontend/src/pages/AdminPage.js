@@ -58,80 +58,15 @@ const AdminPage = () => {
 
   const fetchBookings = async () => {
     try {
-      const primaryUrl = process.env.REACT_APP_BACKEND_URL;
-      const fallbackUrl = 'http://localhost:8001';
-      
-      let response;
-      let backendUrl;
-      
-      // Try primary URL first (emergent agent)
-      if (primaryUrl) {
-        try {
-          // Create timeout for the request
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-          
-          response = await fetch(`${primaryUrl}/api/bookings`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            signal: controller.signal
-          });
-          
-          clearTimeout(timeoutId);
-          
-          if (response.ok) {
-            backendUrl = primaryUrl;
-          } else {
-            throw new Error(`Primary URL failed: ${response.status}`);
-          }
-        } catch (primaryError) {
-          console.warn('Primary backend URL failed, trying fallback:', primaryError.message);
-          
-          // Try fallback URL (localhost)
-          try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout for localhost
-            
-            response = await fetch(`${fallbackUrl}/api/bookings`, {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              signal: controller.signal
-            });
-            
-            clearTimeout(timeoutId);
-            
-            if (response.ok) {
-              backendUrl = fallbackUrl;
-            } else {
-              throw new Error(`Fallback URL also failed: ${response.status}`);
-            }
-          } catch (fallbackError) {
-            throw new Error(`Both primary and fallback URLs failed. Primary: ${primaryError.message}, Fallback: ${fallbackError.message}`);
-          }
-        }
-      } else {
-        // No primary URL, use fallback directly
-        response = await fetch(`${fallbackUrl}/api/bookings`);
-        backendUrl = fallbackUrl;
-      }
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
+      setLoading(true);
+      const data = await bookingService.getAllBookings();
       setBookings(data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
       setError(null);
-      
-      console.log(`Successfully fetched bookings from: ${backendUrl}`);
+      console.log('Successfully fetched bookings');
     } catch (err) {
       console.error('Error fetching bookings:', err);
       setError(`Failed to load bookings: ${err.message}`);
-      setBookings([]); // Clear bookings on error
+      setBookings([]);
     } finally {
       setLoading(false);
     }
