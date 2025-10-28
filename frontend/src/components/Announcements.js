@@ -35,7 +35,7 @@ const Announcements = () => {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gaming-text mb-3 lg:mb-4">
-            Whats New at KGG
+            What's New at KGG
             <span className="block text-gaming-accent subtle-text">Stay Updated</span>
           </h2>
           <p className="text-base lg:text-lg text-gaming-text-secondary max-w-2xl mx-auto">
