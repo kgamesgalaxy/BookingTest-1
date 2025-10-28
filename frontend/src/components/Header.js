@@ -116,10 +116,10 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <nav className="py-4 space-y-4 border-t border-gaming-border mt-4 bg-gaming-light/95 backdrop-blur-lg rounded-lg shadow-gaming-lg">
+        <div className={`lg:hidden transition-all duration-300 ${
+          isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        } overflow-y-auto overflow-x-hidden`}>
+          <nav className="py-4 space-y-4 border-t border-gaming-border mt-4 bg-gaming-light/95 backdrop-blur-lg rounded-lg shadow-gaming-lg max-h-[70vh] overflow-y-auto">
             <button 
               onClick={() => scrollToSection('latest')}
               className="block w-full text-left text-gaming-text hover:text-gaming-accent hover:bg-gaming-accent/10 transition-colors duration-200 font-medium py-3 px-4 rounded-lg"
