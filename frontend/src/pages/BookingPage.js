@@ -14,6 +14,7 @@ import { bookingService, availabilityService, settingsService } from '../service
 import { createBooking } from '../services/api';
 import ReferenceNumberModal from '../components/ReferenceNumberModal';
 import { useApi, useApiMutation } from '../hooks/useApi';
+import HeroBot from '../components/HeroBot';
 
 const BookingPage = () => {
   const navigate = useNavigate();
