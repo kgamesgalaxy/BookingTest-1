@@ -10,28 +10,28 @@ const LatestGames = () => {
       title: 'Ghost of Yotei',
       platform: 'PlayStation 5',
       note: 'New arrival',
-      image: 'https://images.unsplash.com/photo-1614179924047-e1ab49a0a0cf?crop=entropy&cs=srgb&fm=jpg&q=85',
+      image: 'https://www.gamespot.com/a/uploads/scale_super/1601/16018044/4481011-ghost-yotei.jpg',
     },
     {
       id: 'gta5',
       title: 'Grand Theft Auto V',
       platform: 'PS5 / Xbox Series X',
       note: 'Fan favorite',
-      image: 'https://images.pexels.com/photos/4056883/pexels-photo-4056883.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://images.unsplash.com/photo-1702139806712-5edeca150042?crop=entropy&cs=srgb&fm=jpg&q=85',
     },
     {
       id: 'mario-kart-8',
       title: 'Mario Kart 8 Deluxe',
       platform: 'Nintendo Switch',
       note: 'Party ready',
-      image: 'https://images.unsplash.com/photo-1761395013764-04320a20e4b7?crop=entropy&cs=srgb&fm=jpg&q=85',
+      image: 'https://images.unsplash.com/photo-1599409636295-e3cf3538f212?crop=entropy&cs=srgb&fm=jpg&q=85',
     },
     {
       id: 'beat-saber',
       title: 'Beat Saber',
       platform: 'Meta Quest VR',
       note: 'VR hit',
-      image: 'https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?crop=entropy&cs=srgb&fm=jpg&q=85',
+      image: 'https://images.unsplash.com/photo-1574758519652-904df1f8df4c?crop=entropy&cs=srgb&fm=jpg&q=85',
     },
   ];
 
