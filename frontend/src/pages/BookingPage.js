@@ -21,6 +21,9 @@ const BookingPage = () => {
   const { toast } = useToast();
   const [selectedDate, setSelectedDate] = useState(null);
   const [availableSlots, setAvailableSlots] = useState([]);
+  const [duration, setDuration] = useState(60); // Duration in minutes
+  const [numPeople, setNumPeople] = useState(1); // Number of people
+  const [calculatedPrice, setCalculatedPrice] = useState(null); // Calculated price
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
