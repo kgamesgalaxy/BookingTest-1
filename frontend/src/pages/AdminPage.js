@@ -89,15 +89,6 @@ const AdminPage = () => {
       alert('Failed to update booking status. Please try again.');
     }
   };
-        )
-      );
-      
-      console.log(`Booking ${bookingId} updated to ${newStatus} via ${backendUrl}`);
-    } catch (err) {
-      console.error('Error updating booking status:', err);
-      setError(`Failed to update booking status: ${err.message}`);
-    }
-  };
 
   // Show login page if not authenticated
   if (!isLoggedIn) {
