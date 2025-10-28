@@ -12,7 +12,7 @@ const FeaturedGames = () => {
       category: "Action Adventure",
       rating: 4.9,
       players: "1 Player",
-      image: "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?crop=entropy&cs=srgb&fm=jpg&q=85",
+      image: "https://images.unsplash.com/photo-1642456074142-92f75cb84533?crop=entropy&cs=srgb&fm=jpg&q=85",
       isNew: true,
       isPopular: false
     },
@@ -23,7 +23,7 @@ const FeaturedGames = () => {
       category: "First Person Shooter",
       rating: 4.7,
       players: "1-16 Players",
-      image: "https://images.unsplash.com/photo-1593118247619-e2d6f056869e?crop=entropy&cs=srgb&fm=jpg&q=85",
+      image: "https://images.unsplash.com/photo-1738071665033-7ba9885c2c20?crop=entropy&cs=srgb&fm=jpg&q=85",
       isNew: false,
       isPopular: true
     },
@@ -34,7 +34,7 @@ const FeaturedGames = () => {
       category: "Rhythm VR",
       rating: 4.8,
       players: "1 Player",
-      image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?crop=entropy&cs=srgb&fm=jpg&q=85",
+      image: "https://images.unsplash.com/photo-1574758519652-904df1f8df4c?crop=entropy&cs=srgb&fm=jpg&q=85",
       isNew: false,
       isPopular: true
     },
@@ -45,7 +45,7 @@ const FeaturedGames = () => {
       category: "Strategy",
       rating: 4.6,
       players: "3-4 Players",
-      image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "https://images.unsplash.com/photo-1745016191181-aa91c2fd23b6?crop=entropy&cs=srgb&fm=jpg&q=85",
       isNew: false,
       isPopular: false
     }
