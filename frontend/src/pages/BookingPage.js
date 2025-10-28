@@ -156,6 +156,7 @@ const BookingPage = () => {
 
   return (
     <div className="min-h-screen bg-gaming-lighter">
+      <HeroBot />
       {/* Header */}
       <div className="bg-gaming-light border-b border-gaming-border shadow-gaming">
         <div className="container mx-auto px-4 py-4">
