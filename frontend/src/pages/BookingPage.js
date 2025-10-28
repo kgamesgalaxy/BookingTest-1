@@ -143,7 +143,10 @@ const BookingPage = () => {
     try {
       const bookingData = {
         ...formData,
-        date: selectedDate.toISOString()
+        date: selectedDate.toISOString(),
+        duration,
+        num_people: numPeople,
+        price: calculatedPrice?.total_price || 0
       };
 
       const response = await createBooking(bookingData);
