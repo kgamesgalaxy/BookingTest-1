@@ -3,10 +3,15 @@ class ApiService {
   constructor() {
     this.primaryUrl = process.env.REACT_APP_BACKEND_URL;
     this.fallbackUrl = 'http://localhost:8001';
+    console.log('🔧 API Service initialized:');
+    console.log('  Primary URL:', this.primaryUrl);
+    console.log('  Fallback URL:', this.fallbackUrl);
   }
 
   async makeRequest(endpoint, options = {}) {
     const { method = 'GET', body, headers = {}, timeout = 10000 } = options;
+    
+    console.log(`📡 API Request: ${method} ${endpoint}`);
     
     // Try primary URL first (emergent agent)
     if (this.primaryUrl) {
