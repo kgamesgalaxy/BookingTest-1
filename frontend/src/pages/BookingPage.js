@@ -322,6 +322,33 @@ const BookingPage = () => {
                         </SelectContent>
                       </Select>
                     </div>
+
+                    {/* Pricing Summary */}
+                    {calculatedPrice && (
+                      <div className="mt-4 p-4 bg-gaming-accent/10 border border-gaming-accent/30 rounded-lg">
+                        <h4 className="text-sm font-semibold text-gaming-text mb-2">📊 Booking Summary</h4>
+                        <div className="space-y-1 text-sm text-gaming-text-secondary">
+                          <div className="flex justify-between">
+                            <span>Rate:</span>
+                            <span className="font-medium">{calculatedPrice.breakdown.rate}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Duration:</span>
+                            <span className="font-medium">{duration} minutes</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>People:</span>
+                            <span className="font-medium">{numPeople}</span>
+                          </div>
+                          <div className="border-t border-gaming-accent/30 pt-2 mt-2">
+                            <div className="flex justify-between items-center">
+                              <span className="font-semibold text-gaming-text">Total Price:</span>
+                              <span className="text-lg font-bold text-gaming-accent">₹{calculatedPrice.total_price}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Date and Time */}
