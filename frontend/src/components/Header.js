@@ -39,7 +39,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             <button 
               onClick={() => scrollToSection('latest')}
               className="text-gaming-text hover:text-gaming-accent transition-colors duration-200 font-medium relative group"
