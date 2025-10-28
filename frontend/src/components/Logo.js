@@ -20,8 +20,8 @@ const Logo = () => {
         </div>
       )}
       <div className="flex flex-col leading-none">
-        <span className="text-xl lg:text-2xl font-extrabold text-gaming-text tracking-wide">Games Galaxy</span>
-        <span className="text-[10px] lg:text-xs text-gaming-accent font-semibold uppercase tracking-widest">Karthikeya</span>
+        <span className="text-base lg:text-lg font-extrabold text-gaming-text tracking-tight">Karthikeya's</span>
+        <span className="text-sm lg:text-base text-gaming-accent font-bold tracking-wide">Games Galaxy</span>
       </div>
     </div>
   );
