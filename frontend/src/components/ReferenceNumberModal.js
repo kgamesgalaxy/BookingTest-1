@@ -12,7 +12,7 @@ import { Button } from './ui/button';
 import { CheckCircle, Copy, Calendar, Clock, Phone } from 'lucide-react';
 import { format } from 'date-fns';
 
-const ReferenceNumberModal = ({ isOpen, onClose, referenceNumber, bookingDetails, whatsappNumber = '+447440070177' }) => {
+const ReferenceNumberModal = ({ isOpen, onClose, referenceNumber, bookingDetails, whatsappNumber = '+917702528817' }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referenceNumber);
     // Could add a toast notification here if needed
