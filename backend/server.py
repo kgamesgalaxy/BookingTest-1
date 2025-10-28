@@ -72,6 +72,42 @@ async def create_booking(booking_data: BookingCreate):
         logger.error(f"Error creating booking: {e}")
         raise HTTPException(status_code=500, detail="Failed to create booking")
 
+@api_router.post("/bookings/calculate-price")
+async def calculate_price(data: dict):
+    """Calculate price for a booking"""
+    game_type = data.get('game_type')
+    duration = data.get('duration', 60)
+    num_people = data.get('num_people', 1)
+    
+    if not game_type:
+        raise HTTPException(status_code=400, detail="game_type is required")
+    
+    try:
+        from config import PRICING_PER_HOUR
+        
+        if game_type not in PRICING_PER_HOUR:
+            raise HTTPException(status_code=400, detail=f"Invalid game type: {game_type}")
+        
+        rate_per_hour = PRICING_PER_HOUR[game_type]
+        hours = duration / 60
+        total_price = rate_per_hour * hours * num_people
+        
+        return {
+            "game_type": game_type,
+            "duration": duration,
+            "num_people": num_people,
+            "rate_per_hour": rate_per_hour,
+            "total_price": round(total_price, 2),
+            "breakdown": {
+                "rate": f"₹{rate_per_hour}/hour/person",
+                "hours": hours,
+                "people": num_people,
+                "calculation": f"₹{rate_per_hour} × {hours} hours × {num_people} people"
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @api_router.get("/bookings", response_model=List[Booking])
 async def get_all_bookings():
     """Get all bookings"""
