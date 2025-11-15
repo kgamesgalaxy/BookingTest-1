@@ -80,7 +80,7 @@ const Pricing = () => {
                 thickness={2}
                 style={{ borderRadius: 24 }}
               >
-                <Card className={`relative bg-bg-primary border-0 transition-all duration-300`}>
+                <Card className={`relative bg-bg-primary border-0 transition-all duration-300 rounded-[22px] overflow-hidden`}>
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                       <span className="bg-accent-primary text-bg-primary px-4 py-1 rounded-full text-sm font-semibold flex items-center">

@@ -1,27 +1,29 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 
-const ElectricBorder = ({ 
-  children, 
-  color = '#7df9ff', 
-  speed = 1, 
-  chaos = 0.5, 
+const ElectricBorder = ({
+  children,
+  color = '#7df9ff',
+  speed = 1,
+  chaos = 0.5,
   thickness = 2,
   style = {},
   className = ''
 }) => {
   const turbulenceRef = useRef(null);
   const animationRef = useRef(null);
+  const filterId = useMemo(() => `turbulent-displace-${Math.random().toString(36).substr(2, 9)}`, []);
 
   useEffect(() => {
     if (!turbulenceRef.current) return;
 
     let baseFrequency = 0.02;
-    const chaosMultiplier = chaos;
     const animationSpeed = speed * 0.001;
 
     const animate = () => {
       baseFrequency += animationSpeed;
-      turbulenceRef.current.setAttribute('baseFrequency', `${baseFrequency} 0.02`);
+      if (turbulenceRef.current) {
+        turbulenceRef.current.setAttribute('baseFrequency', `${baseFrequency} 0.02`);
+      }
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -39,7 +41,7 @@ const ElectricBorder = ({
   const borderRadius = style.borderRadius || 16;
 
   return (
-    <div 
+    <div
       className={`electric-border-container ${className}`}
       style={{
         position: 'relative',
@@ -51,7 +53,7 @@ const ElectricBorder = ({
     >
       <svg style={{ position: 'absolute', width: 0, height: 0 }}>
         <defs>
-          <filter id="turbulent-displace">
+          <filter id={filterId}>
             <feTurbulence
               ref={turbulenceRef}
               type="turbulence"
@@ -87,9 +89,9 @@ const ElectricBorder = ({
               border: `${thickness}px solid ${color}`,
               marginTop: '-4px',
               marginLeft: '-4px',
-              filter: 'url(#turbulent-displace)',
+              filter: `url(#${filterId})`,
               position: 'relative',
-              background: '#0a0a0a',
+              background: 'transparent',
               overflow: 'hidden'
             }}
           >

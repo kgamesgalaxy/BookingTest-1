@@ -2,8 +2,11 @@ import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Tilt } from './ui/tilt';
 import { Sparkles, Megaphone, Gamepad2, TrendingUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const LatestGames = () => {
+  const navigate = useNavigate();
+
   const latest = [
     {
       id: 'ghost-of-yotei',
@@ -63,7 +66,8 @@ const LatestGames = () => {
           {latest.map((game, index) => (
             <Tilt key={game.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
               <Card
-                className="bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg transition-all duration-300"
+                onClick={() => navigate('/booking')}
+                className="bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg transition-all duration-300 cursor-pointer"
               >
                 <CardContent className="p-0">
                 <div className="relative overflow-hidden rounded-t-2xl">

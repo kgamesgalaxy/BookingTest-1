@@ -2,8 +2,11 @@ import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Star, Play, Users, Trophy } from 'lucide-react';
 import { Tilt } from './ui/tilt';
+import { useNavigate } from 'react-router-dom';
 
 const FeaturedGames = () => {
+  const navigate = useNavigate();
+
   const featuredGames = [
     {
       id: 1,
@@ -89,16 +92,19 @@ const FeaturedGames = () => {
                 <CardContent className="p-0">
                 {/* Game Image */}
                 <div className="relative overflow-hidden rounded-t-2xl">
-                  <img 
+                  <img
                     src={game.image}
                     alt={game.title}
                     className="w-full h-40 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-gaming-text/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4">
-                      <button className="w-full bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-gaming text-sm">
+                      <button
+                        onClick={() => navigate('/booking')}
+                        className="w-full bg-gaming-accent hover:bg-gaming-accent-hover text-gaming-light font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-gaming text-sm"
+                      >
                         <Play className="w-3 h-3 lg:w-4 lg:h-4 inline mr-2" />
                         Play Now
                       </button>

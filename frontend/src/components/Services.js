@@ -99,7 +99,7 @@ const Services = () => {
                   style={{ borderRadius: 24 }}
                 >
                   <Card
-                    className={`bg-gaming-card border-0 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300`}
+                    className={`bg-gaming-card border-0 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300 rounded-[22px] overflow-hidden`}
                   >
                     {/* Status Indicator */}
                     <div className="absolute top-3 lg:top-4 right-3 lg:right-4 w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming"></div>
