@@ -10,13 +10,13 @@ class ApiService {
     const isNetlify = hostname.includes('netlify.app') || hostname.includes('netlify.com');
 
     // Use environment variable if set
-    // If running on Netlify (preview) or in a production build without a backend URL, use relative paths.
+    // If running on Netlify (preview) or in a production build without a backend URL, use the Railway domain.
     // Otherwise (local development), default to localhost backend.
     if (backendUrl) {
       this.baseUrl = backendUrl;
     } else if (isNetlify || isProduction) {
-      // On Netlify or production builds where proxy is configured, use relative paths
-      this.baseUrl = '';
+      // Production environment - use Railway domain
+      this.baseUrl = 'https://kgamesgalaxy-production.up.railway.app';
     } else {
       // Local development - default to localhost backend
       this.baseUrl = 'http://localhost:8001';
