@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Button } from './ui/button';
 import { Check, Clock, Users, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import ElectricBorder from './ElectricBorder';
 
 const Pricing = () => {
   const navigate = useNavigate();
@@ -65,51 +66,64 @@ const Pricing = () => {
             No hidden fees, no complicated packages. Just straightforward pricing for unlimited gaming fun.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {packages.map((pkg, index) => (
-            <Card key={index} className={`relative bg-bg-primary border-border-subtle hover:border-accent-primary transition-all duration-300 ${pkg.popular ? 'ring-2 ring-accent-primary' : ''}`}>
-              {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-accent-primary text-bg-primary px-4 py-1 rounded-full text-sm font-semibold flex items-center">
-                    <Star className="w-4 h-4 mr-1" />
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl text-text-primary mb-2">
-                  {pkg.title}
-                </CardTitle>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold text-accent-primary">{pkg.price}</span>
-                  <span className="text-text-secondary ml-2">{pkg.duration}</span>
-                </div>
-                <CardDescription className="text-text-secondary">
-                  {pkg.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-text-secondary">
-                      <Check className="w-5 h-5 text-accent-primary mr-3" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button 
-                  className={`w-full ${pkg.popular ? 'bg-accent-primary text-bg-primary hover:bg-accent-hover' : 'bg-bg-secondary text-text-primary border border-border-subtle hover:border-accent-primary hover:text-accent-primary'}`}
-                  onClick={() => navigate('/booking')}
-                >
-                  Book Now
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+          {packages.map((pkg, index) => {
+            const colors = ['#7df9ff', '#10b981', '#f97316'];
+            const borderColor = colors[index];
+
+            return (
+              <ElectricBorder
+                key={index}
+                color={borderColor}
+                speed={pkg.popular ? 1.5 : 1}
+                chaos={pkg.popular ? 0.6 : 0.4}
+                thickness={2}
+                style={{ borderRadius: 24 }}
+              >
+                <Card className={`relative bg-bg-primary border-0 transition-all duration-300`}>
+                  {pkg.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <span className="bg-accent-primary text-bg-primary px-4 py-1 rounded-full text-sm font-semibold flex items-center">
+                        <Star className="w-4 h-4 mr-1" />
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
+
+                  <CardHeader className="text-center">
+                    <CardTitle className="text-xl text-text-primary mb-2">
+                      {pkg.title}
+                    </CardTitle>
+                    <div className="mb-4">
+                      <span className="text-3xl font-bold text-accent-primary">{pkg.price}</span>
+                      <span className="text-text-secondary ml-2">{pkg.duration}</span>
+                    </div>
+                    <CardDescription className="text-text-secondary">
+                      {pkg.description}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent>
+                    <ul className="space-y-3 mb-8">
+                      {pkg.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-text-secondary">
+                          <Check className="w-5 h-5 text-accent-primary mr-3" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      className={`w-full ${pkg.popular ? 'bg-accent-primary text-bg-primary hover:bg-accent-hover' : 'bg-bg-secondary text-text-primary border border-border-subtle hover:border-accent-primary hover:text-accent-primary'}`}
+                      onClick={() => navigate('/booking')}
+                    >
+                      Book Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              </ElectricBorder>
+            );
+          })}
         </div>
 
         {/* Additional Information */}

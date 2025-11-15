@@ -6,6 +6,7 @@ import { useApi } from '../hooks/useApi';
 import { gameTypeService } from '../services/api';
 import { Gamepad2, Monitor, Headphones, Dice6, ArrowRight, Star } from 'lucide-react';
 import { Tilt } from './ui/tilt';
+import ElectricBorder from './ElectricBorder';
 
 const Services = () => {
   const { data: gameTypes, loading } = useApi(gameTypeService.getAll, []);
@@ -78,64 +79,83 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8 lg:mb-12">
-          {gameTypes?.map((gameType, index) => (
-            <Tilt key={gameType.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
-            <Card 
-              className={`bg-gaming-card border border-gaming-border hover:border-gaming-accent/30 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300`}
-            >
-              {/* Status Indicator */}
-              <div className="absolute top-3 lg:top-4 right-3 lg:right-4 w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming"></div>
+          {gameTypes?.map((gameType, index) => {
+            const colorMap = {
+              'ps5': '#0070f3',
+              'xbox': '#10b981',
+              'switch': '#ef4444',
+              'vr': '#a855f7',
+              'board': '#f97316'
+            };
+            const borderColor = colorMap[gameType.id] || '#7df9ff';
 
-              <CardHeader className="relative z-10 text-center pb-3 lg:pb-4">
-                <div className="flex items-center justify-center mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <div className="p-3 lg:p-4 rounded-xl lg:rounded-2xl bg-gaming-accent-light text-gaming-accent group-hover:bg-gaming-accent group-hover:text-gaming-light transition-all duration-300">
-                    {getIcon(gameType)}
-                  </div>
-                </div>
-                
-                <CardTitle className="text-lg lg:text-xl text-gaming-text group-hover:text-gaming-accent transition-colors duration-300 mb-2">
-                  {gameType.name}
-                </CardTitle>
-                
-                <CardDescription className="text-sm lg:text-base text-gaming-text-secondary group-hover:text-gaming-text transition-colors duration-300">
-                  {gameType.description}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="relative z-10 pt-0">
-                {/* Popular Games Preview */}
-                <div className="mb-4 lg:mb-6">
-                  <h4 className="text-xs lg:text-sm font-semibold text-gaming-accent mb-2 lg:mb-3 uppercase tracking-wider">
-                    Popular Games:
-                  </h4>
-                  <div className="space-y-1.5 lg:space-y-2">
-                    {gameType.popular_games?.slice(0, 4).map((game, idx) => (
-                      <div key={idx} className="flex items-center text-gaming-text-secondary group-hover:text-gaming-text transition-colors duration-300">
-                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-gaming-accent rounded-full mr-2 lg:mr-3 group-hover:scale-125 transition-transform duration-300"></div>
-                        <span className="text-xs lg:text-sm">{game}</span>
-                      </div>
-                    ))}
-                    {gameType.popular_games?.length > 4 && (
-                      <div className="flex items-center text-gaming-accent">
-                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-gaming-accent rounded-full mr-2 lg:mr-3"></div>
-                        <span className="text-xs lg:text-sm font-medium">+{gameType.popular_games.length - 4} more games</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                {/* Action Button */}
-                <Button 
-                  className="w-full bg-transparent border-2 border-gaming-accent/30 text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light transition-all duration-300 group-hover:scale-105 shadow-gaming text-sm lg:text-base py-2 lg:py-3"
-                  onClick={() => navigate('/booking')}
+            return (
+              <Tilt key={gameType.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+                <ElectricBorder
+                  color={borderColor}
+                  speed={1.2}
+                  chaos={0.4}
+                  thickness={2}
+                  style={{ borderRadius: 24 }}
                 >
-                  Book Session
-                  <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-                </Button>
-              </CardContent>
-            </Card>
-            </Tilt>
-          ))}
+                  <Card
+                    className={`bg-gaming-card border-0 shadow-gaming hover:shadow-gaming-lg group cursor-pointer transition-all duration-300`}
+                  >
+                    {/* Status Indicator */}
+                    <div className="absolute top-3 lg:top-4 right-3 lg:right-4 w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gaming-accent rounded-full animate-pulse shadow-gaming"></div>
+
+                    <CardHeader className="relative z-10 text-center pb-3 lg:pb-4">
+                      <div className="flex items-center justify-center mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <div className="p-3 lg:p-4 rounded-xl lg:rounded-2xl bg-gaming-accent-light text-gaming-accent group-hover:bg-gaming-accent group-hover:text-gaming-light transition-all duration-300">
+                          {getIcon(gameType)}
+                        </div>
+                      </div>
+
+                      <CardTitle className="text-lg lg:text-xl text-gaming-text group-hover:text-gaming-accent transition-colors duration-300 mb-2">
+                        {gameType.name}
+                      </CardTitle>
+
+                      <CardDescription className="text-sm lg:text-base text-gaming-text-secondary group-hover:text-gaming-text transition-colors duration-300">
+                        {gameType.description}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="relative z-10 pt-0">
+                      {/* Popular Games Preview */}
+                      <div className="mb-4 lg:mb-6">
+                        <h4 className="text-xs lg:text-sm font-semibold text-gaming-accent mb-2 lg:mb-3 uppercase tracking-wider">
+                          Popular Games:
+                        </h4>
+                        <div className="space-y-1.5 lg:space-y-2">
+                          {gameType.popular_games?.slice(0, 4).map((game, idx) => (
+                            <div key={idx} className="flex items-center text-gaming-text-secondary group-hover:text-gaming-text transition-colors duration-300">
+                              <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-gaming-accent rounded-full mr-2 lg:mr-3 group-hover:scale-125 transition-transform duration-300"></div>
+                              <span className="text-xs lg:text-sm">{game}</span>
+                            </div>
+                          ))}
+                          {gameType.popular_games?.length > 4 && (
+                            <div className="flex items-center text-gaming-accent">
+                              <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-gaming-accent rounded-full mr-2 lg:mr-3"></div>
+                              <span className="text-xs lg:text-sm font-medium">+{gameType.popular_games.length - 4} more games</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Action Button */}
+                      <Button
+                        className="w-full bg-transparent border-2 border-gaming-accent/30 text-gaming-accent hover:bg-gaming-accent hover:text-gaming-light transition-all duration-300 group-hover:scale-105 shadow-gaming text-sm lg:text-base py-2 lg:py-3"
+                        onClick={() => navigate('/booking')}
+                      >
+                        Book Session
+                        <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </ElectricBorder>
+              </Tilt>
+            );
+          })}
         </div>
 
         {/* Pricing Section */}
