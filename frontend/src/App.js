@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import BookingPage from './pages/BookingPage';
 import AdminPage from './pages/AdminPage';
 import CancelBookingPage from './pages/CancelBookingPage';
+import ElectricBorderDemo from './pages/ElectricBorderDemo';
 import { Toaster } from './components/ui/toaster';
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/cancel" element={<CancelBookingPage />} />
+          <Route path="/electric-border-demo" element={<ElectricBorderDemo />} />
         </Routes>
         <Toaster />
       </Router>

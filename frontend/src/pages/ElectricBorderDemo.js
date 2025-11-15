@@ -26,7 +26,7 @@ const ElectricBorderDemo = () => {
             thickness={2}
             style={{ borderRadius: 24 }}
           >
-            <Card className="bg-gaming-card border-0 h-full">
+            <Card className="bg-gaming-card border-0 h-full rounded-[22px] overflow-hidden">
               <CardHeader>
                 <div className="flex items-center justify-center mb-4">
                   <div className="p-4 rounded-2xl bg-cyan-500/20">
@@ -64,7 +64,7 @@ const ElectricBorderDemo = () => {
             thickness={2}
             style={{ borderRadius: 24 }}
           >
-            <Card className="bg-gaming-card border-0 h-full">
+            <Card className="bg-gaming-card border-0 h-full rounded-[22px] overflow-hidden">
               <CardHeader>
                 <div className="flex items-center justify-center mb-4">
                   <div className="p-4 rounded-2xl bg-green-500/20">
@@ -102,7 +102,7 @@ const ElectricBorderDemo = () => {
             thickness={2}
             style={{ borderRadius: 24 }}
           >
-            <Card className="bg-gaming-card border-0 h-full">
+            <Card className="bg-gaming-card border-0 h-full rounded-[22px] overflow-hidden">
               <CardHeader>
                 <div className="flex items-center justify-center mb-4">
                   <div className="p-4 rounded-2xl bg-orange-500/20">
@@ -142,7 +142,7 @@ const ElectricBorderDemo = () => {
             thickness={2}
             style={{ borderRadius: 24 }}
           >
-            <Card className="bg-gaming-card border-0">
+            <Card className="bg-gaming-card border-0 rounded-[22px] overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-2xl text-gaming-text">Component Props</CardTitle>
                 <CardDescription className="text-gaming-text-secondary">
@@ -177,9 +177,9 @@ const ElectricBorderDemo = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="bg-gaming-dark/50 p-6 rounded-lg mt-6">
-                    <h4 className="font-semibold text-gaming-text mb-3">Usage Example:</h4>
+                    <h4 className="font-semibold text-gaming-text mb-3">Usage Example</h4>
                     <pre className="text-sm text-gaming-text-secondary overflow-x-auto">
 {`<ElectricBorder
   color="#7df9ff"
@@ -188,7 +188,7 @@ const ElectricBorderDemo = () => {
   thickness={2}
   style={{ borderRadius: 24 }}
 >
-  <YourContent />
+  <YourComponent />
 </ElectricBorder>`}
                     </pre>
                   </div>
@@ -196,20 +196,6 @@ const ElectricBorderDemo = () => {
               </CardContent>
             </Card>
           </ElectricBorder>
-        </div>
-
-        <div className="text-center mt-16">
-          <p className="text-gaming-text-secondary">
-            Original design by{' '}
-            <a 
-              href="https://codepen.io/balintferenczy/pen/MWMxjNe" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gaming-accent hover:underline"
-            >
-              Balint Ferenczy
-            </a>
-          </p>
         </div>
       </div>
     </div>

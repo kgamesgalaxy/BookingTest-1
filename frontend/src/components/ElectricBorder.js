@@ -5,7 +5,7 @@ const ElectricBorder = ({
   color = '#7df9ff',
   speed = 1,
   chaos = 0.5,
-  thickness = 2,
+  thickness = 3,
   style = {},
   className = ''
 }) => {
@@ -36,8 +36,6 @@ const ElectricBorder = ({
     };
   }, [speed, chaos]);
 
-  const lightColor = color;
-  const gradientColor = `${color}66`;
   const borderRadius = style.borderRadius || 16;
 
   return (
@@ -47,7 +45,8 @@ const ElectricBorder = ({
         position: 'relative',
         padding: `${thickness}px`,
         borderRadius: `${borderRadius}px`,
-        background: `linear-gradient(-30deg, ${gradientColor}, transparent, ${gradientColor}), linear-gradient(to bottom, #1a1a1a, #1a1a1a)`,
+        background: `linear-gradient(135deg, ${color}60, transparent, ${color}60)`,
+        boxShadow: `0 0 30px ${color}40`,
         ...style
       }}
     >
@@ -73,107 +72,19 @@ const ElectricBorder = ({
         </defs>
       </svg>
 
-      <div style={{ position: 'relative' }}>
-        <div
-          style={{
-            border: `${thickness}px solid ${color}80`,
-            borderRadius: `${borderRadius}px`,
-            paddingRight: '4px',
-            paddingBottom: '4px'
-          }}
-        >
-          <div
-            className="electric-border-main"
-            style={{
-              borderRadius: `${borderRadius}px`,
-              border: `${thickness}px solid ${color}`,
-              marginTop: '-4px',
-              marginLeft: '-4px',
-              filter: `url(#${filterId})`,
-              position: 'relative',
-              background: 'transparent',
-              overflow: 'hidden'
-            }}
-          >
-            <div
-              style={{
-                border: `${thickness}px solid ${color}99`,
-                borderRadius: `${borderRadius}px`,
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                filter: 'blur(1px)',
-                pointerEvents: 'none'
-              }}
-            />
-            <div
-              style={{
-                border: `${thickness}px solid ${lightColor}`,
-                borderRadius: `${borderRadius}px`,
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                filter: 'blur(4px)',
-                pointerEvents: 'none'
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
-                borderRadius: `${borderRadius}px`,
-                opacity: 1,
-                mixBlendMode: 'overlay',
-                transform: 'scale(1.1)',
-                filter: 'blur(16px)',
-                background: 'linear-gradient(-30deg, white, transparent 30%, transparent 70%, white)',
-                pointerEvents: 'none'
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
-                borderRadius: `${borderRadius}px`,
-                opacity: 0.5,
-                mixBlendMode: 'overlay',
-                transform: 'scale(1.1)',
-                filter: 'blur(16px)',
-                background: 'linear-gradient(-30deg, white, transparent 30%, transparent 70%, white)',
-                pointerEvents: 'none'
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
-                borderRadius: `${borderRadius}px`,
-                filter: 'blur(32px)',
-                transform: 'scale(1.1)',
-                opacity: 0.3,
-                zIndex: -1,
-                background: `linear-gradient(-30deg, ${lightColor}, transparent, ${color})`,
-                pointerEvents: 'none'
-              }}
-            />
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              {children}
-            </div>
-          </div>
-        </div>
+      <div
+        className="electric-border-inner"
+        style={{
+          position: 'relative',
+          borderRadius: `${borderRadius - thickness}px`,
+          border: `${thickness}px solid ${color}`,
+          filter: `url(#${filterId}) drop-shadow(0 0 10px ${color})`,
+          boxShadow: `0 0 20px ${color}80, inset 0 0 20px ${color}30`,
+          overflow: 'hidden',
+          background: 'transparent'
+        }}
+      >
+        {children}
       </div>
     </div>
   );
