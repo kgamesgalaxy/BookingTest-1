@@ -319,47 +319,46 @@ async def startup_event():
 
 # Admin page to view bookings
 @app.get("/admin/bookings", response_class=HTMLResponse)
-    async def admin_bookings_page():
-        """Simple admin page to view all bookings"""
-        try:
-bookings = await booking_service.get_all_bookings()
-
-# Build a simple HTML table for bookings
-rows = []
-for b in bookings:
-if isinstance(b, dict):
-bid = b.get("id", "")
-game_type = b.get("game_type", "")
-start_time = b.get("start_time", "")
-else:
-bid = getattr(b, "id", "")
-game_type = getattr(b, "game_type", "")
-start_time = getattr(b, "start_time", "")
-rows.append(f"<tr><td>{bid}</td><td>{game_type}</td><td>{start_time}</td></tr>")
-
-html = (
-"<html><head><title>Admin Bookings</title></head><body>"
-"<h1>Bookings</h1>"
-"<table border='1'>"
-"<tr><th>ID</th><th>Game Type</th><th>Start Time</th></tr>"
-f"{''.join(rows)}"
-"</table></body></html>"
-)
-
-return HTMLResponse(content=html)
-except Exception as e:
-logger.error(f"Error fetching bookings for admin page: {e}")
-raise HTTPException(status_code=500, detail="Failed to load admin bookings")
-async def health_check():
-    return {"status": "ok", "message": "Karthikeya Games Galaxy backend is running!"}
-
-# Admin page to view bookings
-@app.get("/admin/bookings", response_class=HTMLResponse)
 async def admin_bookings_page():
     """Simple admin page to view all bookings"""
     try:
         bookings = await booking_service.get_all_bookings()
-        
+
+        # Build a simple HTML table for bookings
+        rows = []
+        for b in bookings:
+            if isinstance(b, dict):
+                bid = b.get("id", "")
+                game_type = b.get("game_type", "")
+                start_time = b.get("start_time", "")
+            else:
+                bid = getattr(b, "id", "")
+                game_type = getattr(b, "game_type", "")
+                start_time = getattr(b, "start_time", "")
+            rows.append(f"<tr><td>{bid}</td><td>{game_type}</td><td>{start_time}</td></tr>")
+
+        html = (
+            "<html><head><title>Admin Bookings</title></head><body>"
+            "<h1>Bookings</h1>"
+            "<table border='1'>"
+            "<tr><th>ID</th><th>Game Type</th><th>Start Time</th></tr>"
+            f"{''.join(rows)}"
+            "</table></body></html>"
+        )
+
+        return HTMLResponse(content=html)
+    except Exception as e:
+        logger.error(f"Error fetching bookings for admin page: {e}")
+        raise HTTPException(status_code=500, detail="Failed to load admin bookings")
+
+# Note: Below is an alternate, more styled admin page template.
+# It continues the HTML/CSS started elsewhere in the file.
+@app.get("/admin/bookings/styled", response_class=HTMLResponse)
+async def admin_bookings_styled_page():
+    """Styled admin page to view all bookings"""
+    try:
+        bookings = await booking_service.get_all_bookings()
+
         # Create simple HTML page
         html_content = """
         <!DOCTYPE html>
