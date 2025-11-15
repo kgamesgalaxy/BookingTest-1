@@ -44,7 +44,6 @@ availability_service = AvailabilityService(booking_service)
 game_type_service = GameTypeService(db)
 gallery_service = GalleryService(db)
 settings_service = SettingsService(db)
-settings_service = SettingsService(db)
 
 # Create the main app
 app = FastAPI(title="Karthikeya Games Galaxy API", version="1.0.0")
@@ -513,9 +512,10 @@ logger.info(f"Configured to start server on port {port}")
 async def log_startup_event():
     # This will run when FastAPI triggers the startup event (useful when running under uvicorn)
     logger.info("Application startup event triggered. FastAPI app is initializing.")
+
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8001))
+    port = int(os.environ.get("PORT", 8080))
     print(f"Starting server on port {port}")
 
     # Debug information
